@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "tfl-stats.client", "tfl-stats.client\tfl-stats.client.esproj", "{624805E8-2066-E2B4-5E93-503AF8431DAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfl-stats.Server", "tfl-stats.Server\tfl-stats.Server.csproj", "{4D1AA2BC-2BDE-4547-AFD8-755246525C6A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{624805E8-2066-E2B4-5E93-503AF8431DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{624805E8-2066-E2B4-5E93-503AF8431DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{624805E8-2066-E2B4-5E93-503AF8431DAD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{624805E8-2066-E2B4-5E93-503AF8431DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{624805E8-2066-E2B4-5E93-503AF8431DAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{624805E8-2066-E2B4-5E93-503AF8431DAD}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4D1AA2BC-2BDE-4547-AFD8-755246525C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D1AA2BC-2BDE-4547-AFD8-755246525C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D1AA2BC-2BDE-4547-AFD8-755246525C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D1AA2BC-2BDE-4547-AFD8-755246525C6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31546C3C-FDAB-4952-B670-3A90F8FBBDBA}
+	EndGlobalSection
+EndGlobal
