@@ -26,7 +26,7 @@ cd TFL
 ```bash
 dotnet restore
 ```
-- Add your TfL API credentials to appsettings.json:
+- Add TfL API credentials to appsettings.json:
 ```bash
 
 "TflApi": {
