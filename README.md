@@ -18,3 +18,32 @@ This project uses the TfL API to show tube line status and plan journeys between
 ```bash
 git clone https://github.com/Ameneh-Keshavarz/TFL.git
 cd TF
+```
+### 2. Backend Setup
+
+- Install **.NET 6+**.
+- Restore packages:
+```bash
+dotnet restore
+```
+- Add your TfL API credentials to appsettings.json:
+```bash
+
+"TflApi": {
+  "AppId": "123",
+  "AppKey": "cb52c92815b94cabb22449624d95e007",
+  "BaseUrl": "https://api.tfl.gov.uk/"
+}
+```
+### 3. API Usage
+
+The `/journey` endpoint accepts `from` and `to` locations (station names) and returns a list of possible journeys.
+
+### Example Request:
+
+```json
+{
+  "from": "Kingston",
+  "to": "Piccadilly"
+}
+```
