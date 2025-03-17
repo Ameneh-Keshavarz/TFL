@@ -35,7 +35,17 @@ dotnet restore
   "BaseUrl": "https://api.tfl.gov.uk/"
 }
 ```
-### 3. API Usage
+### 3. Frontend Setup
+- Go to the client folder and install dependencies:
+```bash
+cd tfl-stats.client
+npm install
+```
+-Start the frontend:
+```bash
+npm start
+```
+### 4. API Usage
 
 The `/journey` endpoint accepts `from` and `to` locations (station names) and returns a list of possible journeys.
 
