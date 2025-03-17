@@ -1,4 +1,4 @@
-﻿namespace tfl_stats.Server.Models
+﻿namespace tfl_stats.Server.Models.LineModels
 {
     public class LineStatus
     {

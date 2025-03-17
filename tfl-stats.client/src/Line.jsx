@@ -14,36 +14,44 @@ function GetLine() {
         return line.lineStatuses;
     };
 
-    const contents = lines === undefined
+    const contents = lines.length === 0
         ? <p><em>Loading... Please refresh once the ASP.NET backend has started.</em></p>
         : <table className="table" aria-labelledby="tableLabel">
             <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Status</th>
-                </tr>
+                {/*<tr>*/}
+                {/*    <th>Name</th>*/}
+                {/*    <th>Status</th>*/}
+                {/*</tr>*/}
             </thead>
             <tbody>
                 {lines.map((line, index) => {
                     const statuses = getLineStatuses(line);
-                    const isDelayed = statuses.some(status => status.statusSeverityDescription.includes("Delay"));
-                    const statusClass = isDelayed ? 'status-delayed' : 'status-good';
+                    const isDelayed = statuses.some(status => status.statusSeverityDescription.includes("Delay") || status.statusSeverityDescription.includes("Closure"));
+                    let statusClass = null;
 
                     return (
                         <React.Fragment key={`${line.name}-group-${index}`}>
                             <tr>
                                 <td>{line.name}</td>
-                                <td className={statusClass} onClick={() => handleDisplayStatus(index)}>
-                                    {statuses.map((status, i) => (
-                                        <div key={i}>{status.statusSeverityDescription}</div>
-                                    ))}
+                                <td onClick={() => handleDisplayStatus(index)}>
+                                    {statuses.map((status, i) => {
+                                        if (status.statusSeverityDescription.includes("Good")) {
+                                            statusClass = "status-good";
+                                        } else if (status.statusSeverityDescription.includes("Minor")) {
+                                            statusClass = "status-minordelay";
+                                        } else {
+                                            statusClass = "status-severdelay";
+                                        }
+
+                                        return <div className={statusClass} key={i}>{status.statusSeverityDescription}</div>;
+                                    })}
                                 </td>
                             </tr>
 
                             {showDelayedRows[index] && isDelayed && (
                                 <tr>
-                                    <td colSpan="2" style={{ color: 'red' }}>
-                                        {statuses.filter(status => status.statusSeverityDescription.includes("Delay")).map((status, i) => (
+                                    <td colSpan="2">
+                                        {statuses.filter(status => status.statusSeverityDescription.includes("Delay") || status.statusSeverityDescription.includes("Closure")).map((status, i) => (
                                             <p key={i}>{status.reason}</p>
                                         ))}
                                     </td>

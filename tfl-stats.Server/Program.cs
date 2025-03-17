@@ -1,5 +1,5 @@
-
-using tfl_stats.Server.Services;
+using tfl_stats.Server.Services.JourneyService;
+using tfl_stats.Server.Services.LineService;
 
 namespace tfl_stats.Server
 {
@@ -8,6 +8,8 @@ namespace tfl_stats.Server
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Logging.AddConsole();
 
 
             builder.Services.AddControllers();
@@ -25,6 +27,8 @@ namespace tfl_stats.Server
             builder.Configuration.AddJsonFile("appsettings.json", false, true);
 
             builder.Services.AddHttpClient<ILineService, LineService>();
+            builder.Services.AddHttpClient<IJourneyService, JourneyService>();
+
 
 
 

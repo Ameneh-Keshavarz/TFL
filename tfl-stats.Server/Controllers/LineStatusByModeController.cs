@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using tfl_stats.Server.Services;
+using tfl_stats.Server.Services.LineService;
 
 namespace tfl_stats.Server.Controllers
 {
@@ -14,7 +14,7 @@ namespace tfl_stats.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> getTflStats()
+        public async Task<IActionResult> getLine()
         {
             var data = await _lineService.getLine();
             return Ok(data);

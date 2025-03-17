@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using tfl_stats.Server.Models;
+using tfl_stats.Server.Models.LineModels;
 
-namespace tfl_stats.Server.Services
+namespace tfl_stats.Server.Services.LineService
 {
     public class LineService : ILineService
     {

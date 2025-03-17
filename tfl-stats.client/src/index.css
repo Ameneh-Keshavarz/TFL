@@ -4,7 +4,7 @@
 }
 
 .table {
-    width: 50%;
+    width: 25%;
     border-collapse: collapse;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -28,8 +28,12 @@
     color: #28a745; 
 }
 
-.status-delayed {
-    color: #c12e2a; 
+.status-minordelay {
+    color: #c78e00;
+}
+
+.status-severdelay {
+    color: #c12e2a;
 }
 
 .status-reason {
@@ -39,4 +43,8 @@
 
 .status-delayed:hover {
     text-decoration: underline;
+}
+
+.paragraph {
+    text-align:left;
 }
