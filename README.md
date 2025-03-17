@@ -17,7 +17,7 @@ This project uses the TfL API to show tube line status and plan journeys between
 
 ```bash
 git clone https://github.com/Ameneh-Keshavarz/TFL.git
-cd TF
+cd TFL
 ```
 ### 2. Backend Setup
 
