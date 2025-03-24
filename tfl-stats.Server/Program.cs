@@ -27,7 +27,7 @@ namespace tfl_stats.Server
             builder.Configuration.AddJsonFile("appsettings.json", false, true);
 
             builder.Services.AddHttpClient<ILineService, LineService>();
-            builder.Services.AddHttpClient<IJourneyService, JourneyService>();
+            builder.Services.AddHttpClient<JourneyService>();
 
 
 

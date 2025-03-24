@@ -3,12 +3,12 @@
     public class LineStatus
     {
         public int Id { get; set; }
-        public string LineId { get; set; }
+        public string LineId { get; set; } = string.Empty;
         public int StatusSeverity { get; set; }
-        public string StatusSeverityDescription { get; set; }
-        public string Reason { get; set; }
+        public string StatusSeverityDescription { get; set; } = string.Empty;
+        public string Reason { get; set; } = string.Empty;
         public DateTime Created { get; set; }
-        public List<ValidityPeriod> ValidityPeriods { get; set; }
-        public Disruption Disruption { get; set; }
+        public List<ValidityPeriod> ValidityPeriods { get; set; } = new List<ValidityPeriod>();
+        public Disruption Disruption { get; set; } = new Disruption();
     }
 }

@@ -4,7 +4,7 @@ import GetJourney from './Journey';
 
 function App() {
     return (
-        <div>
+        <div className="row">
             <GetLine />
             <GetJourney />
         </div>

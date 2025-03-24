@@ -3,30 +3,29 @@ using tfl_stats.Server.Models.JourneyModels;
 
 namespace tfl_stats.Server.Services.JourneyService
 {
-    public class JourneyService : IJourneyService
+    public class JourneyService
     {
         private readonly HttpClient _httpclient;
         private readonly IConfiguration _configuration;
+        private readonly string appId;
+        private readonly string appKey;
+        private readonly string baseUrl;
 
         public JourneyService(HttpClient httpClient, IConfiguration configuration)
         {
             _httpclient = httpClient;
             _configuration = configuration;
+            appId = _configuration["TflApi:AppId"] ?? throw new ArgumentNullException(nameof(appId));
+            appKey = _configuration["TflApi:AppKey"] ?? throw new ArgumentNullException(nameof(appKey));
+            baseUrl = _configuration["TflApi:BaseUrl"] ?? throw new ArgumentNullException(nameof(baseUrl));
         }
 
         public async Task<List<Journey>> getJourney(JourneyRequest journeyRequest)
         {
-            string appId = _configuration["TflApi:AppId"];
-            string appKey = _configuration["TflApi:AppKey"];
-            string baseUrl = _configuration["TflApi:BaseUrl"];
+            string? from = await GetStopPointId(journeyRequest.From, appId, appKey, baseUrl);
+            string? to = await GetStopPointId(journeyRequest.To, appId, appKey, baseUrl);
 
-            //string from = await GetStopPointId("Kingston", appId, appKey, baseUrl);
-            //string to = await GetStopPointId("Piccadilly", appId, appKey, baseUrl);
-
-            string from = await GetStopPointId(journeyRequest.From, appId, appKey, baseUrl);
-            string to = await GetStopPointId(journeyRequest.To, appId, appKey, baseUrl);
-
-            if (from == null || to == null)
+            if (string.IsNullOrEmpty(from) || string.IsNullOrEmpty(to))
             {
                 return new List<Journey>();
             }
@@ -36,17 +35,32 @@ namespace tfl_stats.Server.Services.JourneyService
             var responseContent = await _httpclient.GetStringAsync(url);
 
             var journeyResponse = JsonConvert.DeserializeObject<JourneyResponse>(responseContent);
-
             return journeyResponse?.Journeys ?? new List<Journey>();
         }
 
-        private async Task<string> GetStopPointId(string location, string appId, string appKey, string baseUrl)
+        private async Task<string?> GetStopPointId(string location, string appId, string appKey, string baseUrl)
         {
             string url = $"{baseUrl}StopPoint/Search/{Uri.EscapeDataString(location)}?app_id={appId}&app_key={appKey}";
             var responseContent = await _httpclient.GetStringAsync(url);
             var stopPointResponse = JsonConvert.DeserializeObject<StopPointResponse>(responseContent);
 
-            return stopPointResponse?.Matches?.FirstOrDefault()?.Id;
+            var bestMatch = stopPointResponse?.Matches?
+                .Where(sp => sp.Modes.Contains("tube")).FirstOrDefault();
+
+            return bestMatch?.IcsId ?? string.Empty;
+        }
+
+        public async Task<List<string>> GetAutocompleteSuggestions(string query)
+        {
+            if (string.IsNullOrEmpty(query))
+                return new List<string>();
+
+            string url = $"{baseUrl}StopPoint/Search/{Uri.EscapeDataString(query)}?app_id={appId}&app_key={appKey}";
+
+            var response = await _httpclient.GetStringAsync(url);
+            var stopPointResponse = JsonConvert.DeserializeObject<StopPointResponse>(response);
+
+            return stopPointResponse?.Matches?.Select(sp => sp.Name).ToList() ?? new List<string>();
         }
     }
 }

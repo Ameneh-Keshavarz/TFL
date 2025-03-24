@@ -45,6 +45,10 @@
     text-decoration: underline;
 }
 
-.paragraph {
-    text-align:left;
+.form label{
+    margin-right:5px;
+    margin-left:10px;
+}
+.form button {
+    margin-top:20px;
 }

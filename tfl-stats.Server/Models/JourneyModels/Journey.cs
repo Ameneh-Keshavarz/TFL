@@ -17,6 +17,6 @@ namespace tfl_stats.Server.Models.JourneyModels
         public bool AlternativeRoute { get; set; }
 
         [JsonProperty("legs")]
-        public List<JourneyLeg> Legs { get; set; }
+        public List<JourneyLeg> Legs { get; set; } = new List<JourneyLeg>();
     }
 }

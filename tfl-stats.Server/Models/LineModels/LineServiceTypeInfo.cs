@@ -2,7 +2,7 @@
 {
     public class LineServiceTypeInfo
     {
-        public string Name { get; set; }
-        public string Uri { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Uri { get; set; } = string.Empty;
     }
 }

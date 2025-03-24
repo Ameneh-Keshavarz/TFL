@@ -4,16 +4,16 @@ namespace tfl_stats.Server.Models.JourneyModels
 {
     public class StopPointMatch
     {
+        [JsonProperty("icsId")]
+        public string IcsId { get; set; } = string.Empty;
+
+        [JsonProperty("modes")]
+        public string[] Modes { get; set; } = Array.Empty<string>();
+
         [JsonProperty("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = string.Empty;
 
         [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("lat")]
-        public double Latitude { get; set; }
-
-        [JsonProperty("lon")]
-        public double Longitude { get; set; }
+        public string Name { get; set; } = string.Empty;
     }
 }

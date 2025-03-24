@@ -1,8 +1,13 @@
-﻿namespace tfl_stats.Server.Models.JourneyModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace tfl_stats.Server.Models.JourneyModels
 {
     public class JourneyRequest
     {
-        public string From { get; set; }
-        public string To { get; set; }
+        [Required]
+        public string From { get; set; } = string.Empty;
+
+        [Required]
+        public string To { get; set; } = string.Empty;
     }
 }
