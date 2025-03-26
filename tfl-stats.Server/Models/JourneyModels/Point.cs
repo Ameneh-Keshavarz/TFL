@@ -2,15 +2,14 @@
 
 namespace tfl_stats.Server.Models.JourneyModels
 {
-    public class Mode
+    public class Point
     {
         [JsonProperty("id")]
-        [JsonRequired]
-        public string Id { get; set; } = string.Empty;
+        //[JsonRequired]
+        public string NaptanId { get; set; } = string.Empty;
 
         [JsonProperty("name")]
         [JsonRequired]
-        public string Name { get; set; } = string.Empty;
-
+        public string CommonName { get; set; } = string.Empty;
     }
 }

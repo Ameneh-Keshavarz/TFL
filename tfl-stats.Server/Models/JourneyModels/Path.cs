@@ -1,8 +1,16 @@
-﻿namespace tfl_stats.Server.Models.JourneyModels
+﻿using Newtonsoft.Json;
+
+namespace tfl_stats.Server.Models.JourneyModels
 {
     public class Path
     {
+        [JsonProperty("lineString")]
+        [JsonRequired]
         public string LineString { get; set; } = string.Empty;
-        public List<StopPointMatch> StopPoints { get; set; } = new List<StopPointMatch>();
+
+        [JsonProperty("stopPoints")]
+        [JsonRequired]
+        public List<Point> StopPoints { get; set; } = new List<Point>();
+
     }
 }
