@@ -10,8 +10,7 @@
     <SpaRoot>..\tfl-stats.client</SpaRoot>
     <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
     <SpaProxyServerUrl>https://localhost:55811</SpaProxyServerUrl>
-	<UserSecretsId>tfl-stats-secrets</UserSecretsId>
-
+    <UserSecretsId>tfl-stats-secrets</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,19 +27,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\tfl-stats.client\tfl-stats.client.esproj">
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="..\tfl-stats-Core\tfl-stats-Core.csproj" />
+    <ProjectReference Include="..\tfl-stats.Core\tfl-stats.Core.csproj" />
   </ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-	</ItemGroup>
-	
-	
 
 </Project>
