@@ -1788,7 +1788,7 @@ namespace tfl_stats.Core.Client.Generated
         public LineClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api.digital.tfl.gov.uk";
+            BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
             Initialize();
         }
@@ -4014,7 +4014,7 @@ namespace tfl_stats.Core.Client.Generated
         public ModeClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api.digital.tfl.gov.uk";
+            BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
             Initialize();
         }
@@ -4359,7 +4359,7 @@ namespace tfl_stats.Core.Client.Generated
         public OccupancyClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api.digital.tfl.gov.uk";
+            BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
             Initialize();
         }
@@ -6084,7 +6084,7 @@ namespace tfl_stats.Core.Client.Generated
         public RoadClient(System.Net.Http.HttpClient httpClient)
     #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api.digital.tfl.gov.uk";
+            BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
             Initialize();
         }

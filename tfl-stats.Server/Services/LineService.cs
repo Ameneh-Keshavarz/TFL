@@ -1,31 +1,28 @@
-﻿using tfl_stats.Server.Client;
+﻿//using tfl_stats.Server.Models.LineModels;
+using tfl_stats.Core.Client.Generated;
 using tfl_stats.Server.Models;
-using tfl_stats.Server.Models.LineModels;
 
 namespace tfl_stats.Server.Services
 {
     public class LineService
     {
-        private readonly ApiClient _apiClient;
+        private readonly LineClient _lineClient;
 
         private ILogger<LineService> _logger;
 
-        public LineService(ApiClient apiClient, ILogger<LineService> logger)
+        public LineService(LineClient lineClient, ILogger<LineService> logger)
         {
-            _apiClient = apiClient;
+            _lineClient = lineClient;
             _logger = logger;
         }
 
         public async Task<ResponseResult<List<Line>>> GetLine()
         {
-
-            string url = "Line/Mode/tube/Status";
-
-            var lineResponse = await _apiClient.GetFromApi<List<Line>>(url);
+            var lineResponse = await _lineClient.StatusByModeAsync(new[] { "tube" }, true, null);
 
             if (lineResponse != null)
             {
-                return new ResponseResult<List<Line>>(true, lineResponse, ResponseStatus.Ok);
+                return new ResponseResult<List<Line>>(true, lineResponse.ToList(), ResponseStatus.Ok);
             }
 
             return new ResponseResult<List<Line>>(false, new List<Line>(), ResponseStatus.NotFound);
