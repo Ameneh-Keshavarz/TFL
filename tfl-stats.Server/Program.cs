@@ -1,3 +1,4 @@
+using tfl_stats.Core.Client.Generated;
 using tfl_stats.Server.Client;
 using tfl_stats.Server.Services;
 using tfl_stats.Server.Services.Cache;
@@ -39,6 +40,14 @@ namespace tfl_stats.Server
                 options.BaseAddress = new Uri(baseUrl);
                 options.Timeout = TimeSpan.FromSeconds(10);
             });
+
+            builder.Services.AddHttpClient<LineClient>(
+            //    options =>
+            //{
+            //    options.BaseAddress = new Uri(baseUrl);
+            //    options.Timeout = TimeSpan.FromSeconds(10);
+            //}
+            );
 
             builder.Services.AddScoped<LineService>();
             builder.Services.AddScoped<StopPointService>();
