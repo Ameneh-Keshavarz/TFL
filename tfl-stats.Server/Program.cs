@@ -48,6 +48,13 @@ namespace tfl_stats.Server
             //    options.Timeout = TimeSpan.FromSeconds(10);
             //}
             );
+            builder.Services.AddHttpClient<JourneyClient>(
+           //    options =>
+           //{
+           //    options.BaseAddress = new Uri(baseUrl);
+           //    options.Timeout = TimeSpan.FromSeconds(10);
+           //}
+           );
 
             builder.Services.AddScoped<LineService>();
             builder.Services.AddScoped<StopPointService>();
