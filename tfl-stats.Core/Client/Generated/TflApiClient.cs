@@ -25,21 +25,21 @@ namespace tfl_stats.Core.Client.Generated
     using System = global::System;
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.4.0.0 (NJsonSchema v11.3.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AccidentStatsClient 
+    public partial class AccidentStatsClient
     {
-        #pragma warning disable 8618
+#pragma warning disable 8618
         private string _baseUrl;
-        #pragma warning restore 8618
+#pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public AccidentStatsClient(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api.digital.tfl.gov.uk";
+            BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
             Initialize();
         }
@@ -234,7 +234,7 @@ namespace tfl_stats.Core.Client.Generated
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -246,13 +246,13 @@ namespace tfl_stats.Core.Client.Generated
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -275,21 +275,21 @@ namespace tfl_stats.Core.Client.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.4.0.0 (NJsonSchema v11.3.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AirQualityClient 
+    public partial class AirQualityClient
     {
-        #pragma warning disable 8618
+#pragma warning disable 8618
         private string _baseUrl;
-        #pragma warning restore 8618
+#pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public AirQualityClient(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api.digital.tfl.gov.uk";
+            BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
             Initialize();
         }
@@ -478,7 +478,7 @@ namespace tfl_stats.Core.Client.Generated
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -490,13 +490,13 @@ namespace tfl_stats.Core.Client.Generated
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -519,21 +519,21 @@ namespace tfl_stats.Core.Client.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.4.0.0 (NJsonSchema v11.3.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class BikePointClient 
+    public partial class BikePointClient
     {
-        #pragma warning disable 8618
+#pragma warning disable 8618
         private string _baseUrl;
-        #pragma warning restore 8618
+#pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public BikePointClient(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api.digital.tfl.gov.uk";
+            BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
             Initialize();
         }
@@ -910,7 +910,7 @@ namespace tfl_stats.Core.Client.Generated
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -922,13 +922,13 @@ namespace tfl_stats.Core.Client.Generated
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -951,21 +951,21 @@ namespace tfl_stats.Core.Client.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.4.0.0 (NJsonSchema v11.3.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class CabwiseClient 
+    public partial class CabwiseClient
     {
-        #pragma warning disable 8618
+#pragma warning disable 8618
         private string _baseUrl;
-        #pragma warning restore 8618
+#pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public CabwiseClient(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api.digital.tfl.gov.uk";
+            BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
             Initialize();
         }
@@ -1216,7 +1216,7 @@ namespace tfl_stats.Core.Client.Generated
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -1228,13 +1228,13 @@ namespace tfl_stats.Core.Client.Generated
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -1257,19 +1257,19 @@ namespace tfl_stats.Core.Client.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.4.0.0 (NJsonSchema v11.3.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class JourneyClient 
+    public partial class JourneyClient
     {
-        #pragma warning disable 8618
+#pragma warning disable 8618
         private string _baseUrl;
-        #pragma warning restore 8618
+#pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public JourneyClient(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
@@ -1517,11 +1517,11 @@ namespace tfl_stats.Core.Client.Generated
                     }
                     if (mode != null)
                     {
-                            foreach (var item_ in mode) { urlBuilder_.Append(System.Uri.EscapeDataString("mode")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in mode) { urlBuilder_.Append(System.Uri.EscapeDataString("mode")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (accessibilityPreference != null)
                     {
-                            foreach (var item_ in accessibilityPreference) { urlBuilder_.Append(System.Uri.EscapeDataString("accessibilityPreference")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in accessibilityPreference) { urlBuilder_.Append(System.Uri.EscapeDataString("accessibilityPreference")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (fromName != null)
                     {
@@ -1557,7 +1557,7 @@ namespace tfl_stats.Core.Client.Generated
                     }
                     if (bikeProficiency != null)
                     {
-                            foreach (var item_ in bikeProficiency) { urlBuilder_.Append(System.Uri.EscapeDataString("bikeProficiency")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in bikeProficiency) { urlBuilder_.Append(System.Uri.EscapeDataString("bikeProficiency")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (alternativeCycle != null)
                     {
@@ -1733,7 +1733,7 @@ namespace tfl_stats.Core.Client.Generated
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -1745,13 +1745,13 @@ namespace tfl_stats.Core.Client.Generated
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -1774,19 +1774,19 @@ namespace tfl_stats.Core.Client.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.4.0.0 (NJsonSchema v11.3.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class LineClient 
+    public partial class LineClient
     {
-        #pragma warning disable 8618
+#pragma warning disable 8618
         private string _baseUrl;
-        #pragma warning restore 8618
+#pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public LineClient(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
@@ -2381,7 +2381,7 @@ namespace tfl_stats.Core.Client.Generated
                     urlBuilder_.Append('?');
                     if (serviceTypes != null)
                     {
-                            foreach (var item_ in serviceTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("serviceTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in serviceTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("serviceTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     urlBuilder_.Length--;
 
@@ -2484,7 +2484,7 @@ namespace tfl_stats.Core.Client.Generated
                     urlBuilder_.Append('?');
                     if (serviceTypes != null)
                     {
-                            foreach (var item_ in serviceTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("serviceTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in serviceTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("serviceTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     urlBuilder_.Length--;
 
@@ -2587,7 +2587,7 @@ namespace tfl_stats.Core.Client.Generated
                     urlBuilder_.Append('?');
                     if (serviceTypes != null)
                     {
-                            foreach (var item_ in serviceTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("serviceTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in serviceTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("serviceTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     urlBuilder_.Length--;
 
@@ -2694,7 +2694,7 @@ namespace tfl_stats.Core.Client.Generated
                     urlBuilder_.Append('?');
                     if (serviceTypes != null)
                     {
-                            foreach (var item_ in serviceTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("serviceTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in serviceTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("serviceTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (excludeCrowding != null)
                     {
@@ -3021,11 +3021,11 @@ namespace tfl_stats.Core.Client.Generated
                     urlBuilder_.Append('?');
                     if (modes != null)
                     {
-                            foreach (var item_ in modes) { urlBuilder_.Append(System.Uri.EscapeDataString("modes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in modes) { urlBuilder_.Append(System.Uri.EscapeDataString("modes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (serviceTypes != null)
                     {
-                            foreach (var item_ in serviceTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("serviceTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in serviceTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("serviceTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     urlBuilder_.Length--;
 
@@ -3959,7 +3959,7 @@ namespace tfl_stats.Core.Client.Generated
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -3971,13 +3971,13 @@ namespace tfl_stats.Core.Client.Generated
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -4000,19 +4000,19 @@ namespace tfl_stats.Core.Client.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.4.0.0 (NJsonSchema v11.3.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class ModeClient 
+    public partial class ModeClient
     {
-        #pragma warning disable 8618
+#pragma warning disable 8618
         private string _baseUrl;
-        #pragma warning restore 8618
+#pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public ModeClient(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
@@ -4304,7 +4304,7 @@ namespace tfl_stats.Core.Client.Generated
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -4316,13 +4316,13 @@ namespace tfl_stats.Core.Client.Generated
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -4345,19 +4345,19 @@ namespace tfl_stats.Core.Client.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.4.0.0 (NJsonSchema v11.3.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class OccupancyClient 
+    public partial class OccupancyClient
     {
-        #pragma warning disable 8618
+#pragma warning disable 8618
         private string _baseUrl;
-        #pragma warning restore 8618
+#pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public OccupancyClient(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
@@ -4904,7 +4904,7 @@ namespace tfl_stats.Core.Client.Generated
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -4916,13 +4916,13 @@ namespace tfl_stats.Core.Client.Generated
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -4945,21 +4945,21 @@ namespace tfl_stats.Core.Client.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.4.0.0 (NJsonSchema v11.3.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class PlaceClient 
+    public partial class PlaceClient
     {
-        #pragma warning disable 8618
+#pragma warning disable 8618
         private string _baseUrl;
-        #pragma warning restore 8618
+#pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public PlaceClient(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api.digital.tfl.gov.uk";
+            BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
             Initialize();
         }
@@ -5512,7 +5512,7 @@ namespace tfl_stats.Core.Client.Generated
                     }
                     if (categories != null)
                     {
-                            foreach (var item_ in categories) { urlBuilder_.Append(System.Uri.EscapeDataString("categories")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in categories) { urlBuilder_.Append(System.Uri.EscapeDataString("categories")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (includeChildren != null)
                     {
@@ -5520,7 +5520,7 @@ namespace tfl_stats.Core.Client.Generated
                     }
                     if (type != null)
                     {
-                            foreach (var item_ in type) { urlBuilder_.Append(System.Uri.EscapeDataString("type")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in type) { urlBuilder_.Append(System.Uri.EscapeDataString("type")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (activeOnly != null)
                     {
@@ -5901,7 +5901,7 @@ namespace tfl_stats.Core.Client.Generated
                     urlBuilder_.Append(System.Uri.EscapeDataString("name")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(name, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
                     if (types != null)
                     {
-                            foreach (var item_ in types) { urlBuilder_.Append(System.Uri.EscapeDataString("types")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in types) { urlBuilder_.Append(System.Uri.EscapeDataString("types")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     urlBuilder_.Length--;
 
@@ -6029,7 +6029,7 @@ namespace tfl_stats.Core.Client.Generated
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -6041,13 +6041,13 @@ namespace tfl_stats.Core.Client.Generated
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -6070,19 +6070,19 @@ namespace tfl_stats.Core.Client.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.4.0.0 (NJsonSchema v11.3.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class RoadClient 
+    public partial class RoadClient
     {
-        #pragma warning disable 8618
+#pragma warning disable 8618
         private string _baseUrl;
-        #pragma warning restore 8618
+#pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public RoadClient(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
@@ -6457,11 +6457,11 @@ namespace tfl_stats.Core.Client.Generated
                     }
                     if (severities != null)
                     {
-                            foreach (var item_ in severities) { urlBuilder_.Append(System.Uri.EscapeDataString("severities")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in severities) { urlBuilder_.Append(System.Uri.EscapeDataString("severities")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (categories != null)
                     {
-                            foreach (var item_ in categories) { urlBuilder_.Append(System.Uri.EscapeDataString("categories")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in categories) { urlBuilder_.Append(System.Uri.EscapeDataString("categories")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (closures != null)
                     {
@@ -6961,7 +6961,7 @@ namespace tfl_stats.Core.Client.Generated
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -6973,13 +6973,13 @@ namespace tfl_stats.Core.Client.Generated
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -7002,21 +7002,21 @@ namespace tfl_stats.Core.Client.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.4.0.0 (NJsonSchema v11.3.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class SearchClient 
+    public partial class SearchClient
     {
-        #pragma warning disable 8618
+#pragma warning disable 8618
         private string _baseUrl;
-        #pragma warning restore 8618
+#pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public SearchClient(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api.digital.tfl.gov.uk";
+            BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
             Initialize();
         }
@@ -7559,7 +7559,7 @@ namespace tfl_stats.Core.Client.Generated
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -7571,13 +7571,13 @@ namespace tfl_stats.Core.Client.Generated
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -7600,21 +7600,21 @@ namespace tfl_stats.Core.Client.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.4.0.0 (NJsonSchema v11.3.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class StopPointClient 
+    public partial class StopPointClient
     {
-        #pragma warning disable 8618
+#pragma warning disable 8618
         private string _baseUrl;
-        #pragma warning restore 8618
+#pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public StopPointClient(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api.digital.tfl.gov.uk";
+            BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
             Initialize();
         }
@@ -8047,7 +8047,7 @@ namespace tfl_stats.Core.Client.Generated
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
                     urlBuilder_.Append("/placeTypes");
                     urlBuilder_.Append('?');
-                        foreach (var item_ in placeTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("placeTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                    foreach (var item_ in placeTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("placeTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     urlBuilder_.Length--;
 
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -8444,11 +8444,11 @@ namespace tfl_stats.Core.Client.Generated
                     urlBuilder_.Append(System.Uri.EscapeDataString("id")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
                     if (lineIds != null)
                     {
-                            foreach (var item_ in lineIds) { urlBuilder_.Append(System.Uri.EscapeDataString("lineIds")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in lineIds) { urlBuilder_.Append(System.Uri.EscapeDataString("lineIds")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (modes != null)
                     {
-                            foreach (var item_ in modes) { urlBuilder_.Append(System.Uri.EscapeDataString("modes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in modes) { urlBuilder_.Append(System.Uri.EscapeDataString("modes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     urlBuilder_.Length--;
 
@@ -8639,7 +8639,7 @@ namespace tfl_stats.Core.Client.Generated
                     urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
                     urlBuilder_.Append("/ArrivalDepartures");
                     urlBuilder_.Append('?');
-                        foreach (var item_ in lineIds) { urlBuilder_.Append(System.Uri.EscapeDataString("lineIds")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                    foreach (var item_ in lineIds) { urlBuilder_.Append(System.Uri.EscapeDataString("lineIds")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     urlBuilder_.Length--;
 
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -8743,7 +8743,7 @@ namespace tfl_stats.Core.Client.Generated
                     urlBuilder_.Append('?');
                     if (serviceTypes != null)
                     {
-                            foreach (var item_ in serviceTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("serviceTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in serviceTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("serviceTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     urlBuilder_.Length--;
 
@@ -8842,7 +8842,7 @@ namespace tfl_stats.Core.Client.Generated
                     urlBuilder_.Append('?');
                     if (serviceTypes != null)
                     {
-                            foreach (var item_ in serviceTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("serviceTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in serviceTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("serviceTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     urlBuilder_.Length--;
 
@@ -9272,7 +9272,7 @@ namespace tfl_stats.Core.Client.Generated
                     // Operation Path: "StopPoint"
                     urlBuilder_.Append("StopPoint");
                     urlBuilder_.Append('?');
-                        foreach (var item_ in stopTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("stopTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                    foreach (var item_ in stopTypes) { urlBuilder_.Append(System.Uri.EscapeDataString("stopTypes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     if (radius != null)
                     {
                         urlBuilder_.Append(System.Uri.EscapeDataString("radius")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(radius, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
@@ -9283,11 +9283,11 @@ namespace tfl_stats.Core.Client.Generated
                     }
                     if (modes != null)
                     {
-                            foreach (var item_ in modes) { urlBuilder_.Append(System.Uri.EscapeDataString("modes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in modes) { urlBuilder_.Append(System.Uri.EscapeDataString("modes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (categories != null)
                     {
-                            foreach (var item_ in categories) { urlBuilder_.Append(System.Uri.EscapeDataString("categories")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in categories) { urlBuilder_.Append(System.Uri.EscapeDataString("categories")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (returnLines != null)
                     {
@@ -9505,7 +9505,7 @@ namespace tfl_stats.Core.Client.Generated
                     urlBuilder_.Append('?');
                     if (modes != null)
                     {
-                            foreach (var item_ in modes) { urlBuilder_.Append(System.Uri.EscapeDataString("modes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in modes) { urlBuilder_.Append(System.Uri.EscapeDataString("modes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (faresOnly != null)
                     {
@@ -9517,7 +9517,7 @@ namespace tfl_stats.Core.Client.Generated
                     }
                     if (lines != null)
                     {
-                            foreach (var item_ in lines) { urlBuilder_.Append(System.Uri.EscapeDataString("lines")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in lines) { urlBuilder_.Append(System.Uri.EscapeDataString("lines")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (includeHubs != null)
                     {
@@ -9635,7 +9635,7 @@ namespace tfl_stats.Core.Client.Generated
                     urlBuilder_.Append(System.Uri.EscapeDataString("query")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(query, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
                     if (modes != null)
                     {
-                            foreach (var item_ in modes) { urlBuilder_.Append(System.Uri.EscapeDataString("modes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in modes) { urlBuilder_.Append(System.Uri.EscapeDataString("modes")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (faresOnly != null)
                     {
@@ -9647,7 +9647,7 @@ namespace tfl_stats.Core.Client.Generated
                     }
                     if (lines != null)
                     {
-                            foreach (var item_ in lines) { urlBuilder_.Append(System.Uri.EscapeDataString("lines")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
+                        foreach (var item_ in lines) { urlBuilder_.Append(System.Uri.EscapeDataString("lines")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(item_, System.Globalization.CultureInfo.InvariantCulture))).Append('&'); }
                     }
                     if (includeHubs != null)
                     {
@@ -10063,7 +10063,7 @@ namespace tfl_stats.Core.Client.Generated
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -10075,13 +10075,13 @@ namespace tfl_stats.Core.Client.Generated
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -10104,21 +10104,21 @@ namespace tfl_stats.Core.Client.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.4.0.0 (NJsonSchema v11.3.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class TravelTimeClient 
+    public partial class TravelTimeClient
     {
-        #pragma warning disable 8618
+#pragma warning disable 8618
         private string _baseUrl;
-        #pragma warning restore 8618
+#pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public TravelTimeClient(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api.digital.tfl.gov.uk";
+            BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
             Initialize();
         }
@@ -10559,7 +10559,7 @@ namespace tfl_stats.Core.Client.Generated
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -10571,13 +10571,13 @@ namespace tfl_stats.Core.Client.Generated
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -10600,21 +10600,21 @@ namespace tfl_stats.Core.Client.Generated
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.4.0.0 (NJsonSchema v11.3.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class VehicleClient 
+    public partial class VehicleClient
     {
-        #pragma warning disable 8618
+#pragma warning disable 8618
         private string _baseUrl;
-        #pragma warning restore 8618
+#pragma warning restore 8618
 
         private System.Net.Http.HttpClient _httpClient;
         private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
         private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
-    #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public VehicleClient(System.Net.Http.HttpClient httpClient)
-    #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
-            BaseUrl = "https://api.digital.tfl.gov.uk";
+            BaseUrl = "https://api.tfl.gov.uk";
             _httpClient = httpClient;
             Initialize();
         }
@@ -10814,7 +10814,7 @@ namespace tfl_stats.Core.Client.Generated
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
@@ -10826,13 +10826,13 @@ namespace tfl_stats.Core.Client.Generated
                     return converted == null ? string.Empty : converted;
                 }
             }
-            else if (value is bool) 
+            else if (value is bool)
             {
                 return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[]) value);
+                return System.Convert.ToBase64String((byte[])value);
             }
             else if (value is string[])
             {
@@ -11664,10 +11664,10 @@ namespace tfl_stats.Core.Client.Generated
         public System.DateTimeOffset? ArrivalTime { get; set; }
 
         [Newtonsoft.Json.JsonProperty("departurePoint", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Point DeparturePoint { get; set; }
+        public StopPoint DeparturePoint { get; set; }
 
         [Newtonsoft.Json.JsonProperty("arrivalPoint", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public Point ArrivalPoint { get; set; }
+        public StopPoint ArrivalPoint { get; set; }
 
         [Newtonsoft.Json.JsonProperty("path", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Path Path { get; set; }
@@ -12515,9 +12515,6 @@ namespace tfl_stats.Core.Client.Generated
 
         [Newtonsoft.Json.JsonProperty("endLon", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double? EndLon { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("startElevation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? StartElevation { get; set; }
 
         [Newtonsoft.Json.JsonProperty("heightFromPreviousPoint", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? HeightFromPreviousPoint { get; set; }
@@ -14866,41 +14863,38 @@ namespace tfl_stats.Core.Client.Generated
     public enum InstructionStepTrackType
     {
 
-        [System.Runtime.Serialization.EnumMember(Value = @"Cycleways")]
-        Cycleways = 0,
-
         [System.Runtime.Serialization.EnumMember(Value = @"CycleSuperHighway")]
-        CycleSuperHighway = 1,
+        CycleSuperHighway = 0,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CanalTowpath")]
-        CanalTowpath = 2,
+        CanalTowpath = 1,
 
         [System.Runtime.Serialization.EnumMember(Value = @"QuietRoad")]
-        QuietRoad = 3,
+        QuietRoad = 2,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ProvisionForCyclists")]
-        ProvisionForCyclists = 4,
+        ProvisionForCyclists = 3,
 
         [System.Runtime.Serialization.EnumMember(Value = @"BusyRoads")]
-        BusyRoads = 5,
+        BusyRoads = 4,
 
         [System.Runtime.Serialization.EnumMember(Value = @"None")]
-        None = 6,
+        None = 5,
 
         [System.Runtime.Serialization.EnumMember(Value = @"PushBike")]
-        PushBike = 7,
+        PushBike = 6,
 
         [System.Runtime.Serialization.EnumMember(Value = @"Quietway")]
-        Quietway = 8,
+        Quietway = 7,
 
         [System.Runtime.Serialization.EnumMember(Value = @"ShuttleBus")]
-        ShuttleBus = 9,
+        ShuttleBus = 8,
 
         [System.Runtime.Serialization.EnumMember(Value = @"Ferry")]
-        Ferry = 10,
+        Ferry = 9,
 
         [System.Runtime.Serialization.EnumMember(Value = @"CableCar")]
-        CableCar = 11,
+        CableCar = 10,
 
     }
 
@@ -15033,10 +15027,10 @@ namespace tfl_stats.Core.Client.Generated
 
 }
 
-#pragma warning restore  108
-#pragma warning restore  114
-#pragma warning restore  472
-#pragma warning restore  612
+#pragma warning restore 108
+#pragma warning restore 114
+#pragma warning restore 472
+#pragma warning restore 612
 #pragma warning restore 1573
 #pragma warning restore 1591
 #pragma warning restore 8073
