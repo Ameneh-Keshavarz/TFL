@@ -4,34 +4,38 @@ import './App.css';
 function JourneyForm({ formData, fromSuggestions, toSuggestions, onFormSubmit, onInputChange }) {
     return (
         <form className="form journey-form" onSubmit={onFormSubmit}>
-            <label htmlFor="from">From:</label>
-            <input
-                id="from"
-                type="text"
-                name="from"
-                value={formData.from.name}
-                onChange={onInputChange}
-                required
-                list="from-suggestions"
-                autoComplete="off"
-            />
+            <div className="form-row">
+                <input
+                    id="from"
+                    type="text"
+                    name="from"
+                    value={formData.from.name}
+                    onChange={onInputChange}
+                    required
+                    list="from-suggestions"
+                    autoComplete="off"
+                    placeholder="From:"
+                />
+            </div>
             <datalist id="from-suggestions">
                 {fromSuggestions.map((suggestion) => (
                     <option key={suggestion.naptanId} value={suggestion.commonName} />
                 ))}
             </datalist>
 
-            <label htmlFor="to">To:</label>
-            <input
-                id="to"
-                type="text"
-                name="to"
-                value={formData.to.name}
-                onChange={onInputChange}
-                required
-                list="to-suggestions"
-                autoComplete="off"
-            />
+            <div className="form-row">
+                <input
+                    id="to"
+                    type="text"
+                    name="to"
+                    value={formData.to.name}
+                    onChange={onInputChange}
+                    required
+                    list="to-suggestions"
+                    autoComplete="off"
+                    placeholder="To"
+                />
+            </div>
             <datalist id="to-suggestions">
                 {toSuggestions.map((suggestion) => (
                     <option key={suggestion.naptanId} value={suggestion.commonName} />

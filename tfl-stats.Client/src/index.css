@@ -64,12 +64,6 @@
     list-style-type: none;
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
 .button {
     background-color: #ff5a5f;
     color: white;

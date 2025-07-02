@@ -1,34 +1,38 @@
-import { useState } from 'react';
-import './App.css';
+﻿import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import GetLine from './Line';
 import GetJourney from './Journey';
+import './App.css';
 
 function App() {
-    const [activeView, setActiveView] = useState('journey');
+    const location = useLocation();
 
     return (
-        <div>
+        <div className="app-container">
             <header className="main-header">
-                <h1>London Travel Assistant</h1>
-                <nav className="navigation">
-                    <button
-                        className={activeView === 'journey' ? 'nav-button active' : 'nav-button'}
-                        onClick={() => setActiveView('journey')}
+                <h1 className="site-title">🚇 London Travel Assistant</h1>
+                <nav className="nav-bar">
+                    <Link
+                        to="/journey"
+                        className={`nav-link ${location.pathname === '/journey' ? 'active' : ''}`}
                     >
                         Journey Planner
-                    </button>
-                    <button
-                        className={activeView === 'lines' ? 'nav-button active' : 'nav-button'}
-                        onClick={() => setActiveView('lines')}
+                    </Link>
+                    <Link
+                        to="/lines"
+                        className={`nav-link ${location.pathname === '/lines' ? 'active' : ''}`}
                     >
                         Line Status
-                    </button>
+                    </Link>
                 </nav>
             </header>
 
-            <div className="content">
-                {activeView === 'journey' ? <GetJourney /> : <GetLine />}
-            </div>
+            <main className="main-content">
+                <Routes>
+                    <Route path="/journey" element={<GetJourney />} />
+                    <Route path="/lines" element={<GetLine />} />
+                    <Route path="*" element={<GetJourney />} />
+                </Routes>
+            </main>
         </div>
     );
 }
