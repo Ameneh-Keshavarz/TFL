@@ -1,6 +1,6 @@
 ﻿import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import GetLine from './Line';
-import GetJourney from './Journey';
+import LineStatusTable from './Line';
+import JourneyPlanner from './Journey';
 import './App.css';
 
 function App() {
@@ -28,9 +28,9 @@ function App() {
 
             <main className="main-content">
                 <Routes>
-                    <Route path="/journey" element={<GetJourney />} />
-                    <Route path="/lines" element={<GetLine />} />
-                    <Route path="*" element={<GetJourney />} />
+                    <Route path="/journey" element={<JourneyPlanner />} />
+                    <Route path="/lines" element={<LineStatusTable />} />
+                    <Route path="/" element={<JourneyPlanner />} />
                 </Routes>
             </main>
         </div>
