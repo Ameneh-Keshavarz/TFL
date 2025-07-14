@@ -29,7 +29,7 @@ namespace tfl_stats.Server.Services
                 return new ResponseResult<List<Journey2>>(false, new List<Journey2>(), ResponseStatus.BadRequest);
             }
 
-            string url = $"Journey/journeyresults/{Uri.EscapeDataString(journeyRequest.FromNaptanId)}/to/{Uri.EscapeDataString(journeyRequest.ToNaptanId)}";
+            //string url = $"Journey/journeyresults/{Uri.EscapeDataString(journeyRequest.FromNaptanId)}/to/{Uri.EscapeDataString(journeyRequest.ToNaptanId)}";
 
             try
             {
@@ -80,8 +80,5 @@ namespace tfl_stats.Server.Services
                 return new ResponseResult<List<Journey2>>(false, new List<Journey2>(), ResponseStatus.NotFound);
             }
         }
-
-
     }
-
 }
