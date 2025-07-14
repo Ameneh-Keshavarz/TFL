@@ -1,5 +1,4 @@
 using tfl_stats.Core.Client.Generated;
-using tfl_stats.Server.Client;
 using tfl_stats.Server.Services;
 using tfl_stats.Server.Services.Cache;
 
@@ -35,26 +34,15 @@ namespace tfl_stats.Server
                 throw new InvalidOperationException("ApiSettings:BaseUrl is not configured in appsettings.json.");
             }
 
-            builder.Services.AddHttpClient<ApiClient>(options =>
+            /*builder.Services.AddHttpClient<ApiClient>(options =>
             {
                 options.BaseAddress = new Uri(baseUrl);
                 options.Timeout = TimeSpan.FromSeconds(10);
-            });
+            });*/
 
-            builder.Services.AddHttpClient<LineClient>(
-            //    options =>
-            //{
-            //    options.BaseAddress = new Uri(baseUrl);
-            //    options.Timeout = TimeSpan.FromSeconds(10);
-            //}
-            );
-            builder.Services.AddHttpClient<JourneyClient>(
-           //    options =>
-           //{
-           //    options.BaseAddress = new Uri(baseUrl);
-           //    options.Timeout = TimeSpan.FromSeconds(10);
-           //}
-           );
+            builder.Services.AddHttpClient<LineClient>();
+            builder.Services.AddHttpClient<JourneyClient>();
+            builder.Services.AddHttpClient<StopPointClient>();
 
             builder.Services.AddScoped<LineService>();
             builder.Services.AddScoped<StopPointService>();

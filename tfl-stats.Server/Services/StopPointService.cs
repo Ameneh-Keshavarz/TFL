@@ -1,24 +1,23 @@
-﻿using tfl_stats.Server.Client;
+﻿using tfl_stats.Core.Client.Generated;
 using tfl_stats.Server.Models.StopPointModels;
-using tfl_stats.Server.Models.StopPointModels.Mode;
 using tfl_stats.Server.Services.Cache;
 
 namespace tfl_stats.Server.Services
 {
     public class StopPointService
     {
-        private readonly ApiClient _apiClient;
+        private readonly StopPointClient _stopPointClinet;
         private readonly ICacheService _cache;
         private readonly ILogger<StopPointService> _logger;
 
         private static readonly SemaphoreSlim _preloadLock = new(1, 1);
 
         public StopPointService(
-            ApiClient apiClient,
+            StopPointClient stopPointClinet,
             ICacheService cache,
             ILogger<StopPointService> logger)
         {
-            _apiClient = apiClient;
+            _stopPointClinet = stopPointClinet;
             _cache = cache;
             _logger = logger;
         }
@@ -45,10 +44,10 @@ namespace tfl_stats.Server.Services
 
         public async Task<List<StopPointSummary>> FetchAllStopPoints(string _)
         {
-            var url = "StopPoint/Mode/tube";
-            var response = await _apiClient.GetFromApi<StopPointModeResponse>(url);
+            var modes = new[] { "tube" };
+            var response = await _stopPointClinet.GetByModeAsync(modes, null);
 
-            if (response?.StopPoints == null)
+            if (response == null)
             {
                 _logger.LogWarning("API returned no stop points.");
                 return new List<StopPointSummary>();
@@ -68,6 +67,7 @@ namespace tfl_stats.Server.Services
 
             return stopPoints;
         }
+
         public async Task<List<StopPointSummary>> GetAutocompleteSuggestions(string query)
         {
             if (string.IsNullOrWhiteSpace(query))
@@ -108,6 +108,7 @@ namespace tfl_stats.Server.Services
 
             return suggestions;
         }
+
         internal async Task<List<StopPointSummary>> GetStopPointList()
         {
             return await PreloadStopPoints();
