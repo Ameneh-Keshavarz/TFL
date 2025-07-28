@@ -20,7 +20,7 @@ namespace tfl_stats.Tests
             var id = "940GZZLUBND";
             var serviceTypes = new List<Anonymous9>();
 
-            var response = (await _lineClient.RouteSequenceAsync("piccadilly", Direction.Inbound, [Anonymous6.Regular], null))
+            var response = (await _lineClient.RouteSequenceAsync("Circle", Direction.Inbound, [Anonymous6.Regular], null))
                                 .StopPointSequences.ToList();
 
             var json = JsonSerializer.Serialize(response, new JsonSerializerOptions { WriteIndented = true });

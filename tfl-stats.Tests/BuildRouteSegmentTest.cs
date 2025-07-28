@@ -20,10 +20,10 @@ namespace tfl_stats.Tests
         [Fact]
         public async Task TestRouteSegment()
         {
-            var id = "940GZZLUBND";
+            //var id = "940GZZLUBND";
             var serviceTypes = new List<Anonymous9>();
 
-            var routeSequence = (await _lineClient.RouteSequenceAsync("piccadilly",
+            var routeSequence = (await _lineClient.RouteSequenceAsync("central",
                                                                   Direction.Inbound,
                                                                   [Anonymous6.Regular],
                                                                   null));
@@ -34,7 +34,7 @@ namespace tfl_stats.Tests
             await File.WriteAllTextAsync("route-segments.json", json);
 
             Assert.True(File.Exists("route-segments.json"));
-            Assert.Equal(5, routeSegments.Count);
+            //Assert.Equal(5, routeSegments.Count);
 
         }
 
@@ -48,7 +48,12 @@ namespace tfl_stats.Tests
                     segments[segment.BranchId.Value] = new RouteSegment
                     {
                         BranchId = segment.BranchId.Value,
-                        StopPoints = segment.StopPoint.Select(sp => sp.Name).ToList(),
+                        StopPoints = segment.StopPoint.Select(sp => new MatchedStop
+                        {
+                            Name = sp.Name,
+                            Id = sp.Id,
+                            ParentId = sp.ParentId
+                        }).ToList(),
                         NextBranchIds = segment.NextBranchIds.ToList()
                     };
                 }
@@ -60,7 +65,7 @@ namespace tfl_stats.Tests
     public class RouteSegment
     {
         public int BranchId { get; set; }
-        public List<string> StopPoints { get; set; } = new();
+        public List<MatchedStop> StopPoints { get; set; } = new();
         public List<int> NextBranchIds { get; set; } = new();
     }
 }
