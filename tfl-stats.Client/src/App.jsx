@@ -1,6 +1,7 @@
 ﻿import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import LineStatusTable from './Line';
 import JourneyPlanner from './Journey';
+import CentralLineDemo from './CentralLineDemo';
 import './App.css';
 
 function App() {
@@ -23,14 +24,21 @@ function App() {
                     >
                         Line Status
                     </Link>
+                    <Link
+                        to="/CentralLineDemo"
+                        className={`nav-link ${location.pathname === '/CentralLineDemo' ? 'active' : ''}`}
+                    >
+                            Central Line Demo
+                    </Link>
                 </nav>
             </header>
 
             <main className="main-content">
                 <Routes>
+                    <Route path="/" element={<JourneyPlanner />} />
                     <Route path="/journey" element={<JourneyPlanner />} />
                     <Route path="/lines" element={<LineStatusTable />} />
-                    <Route path="/" element={<JourneyPlanner />} />
+                    <Route path="/CentralLineDemo" element={<CentralLineDemo />} />
                 </Routes>
             </main>
         </div>
