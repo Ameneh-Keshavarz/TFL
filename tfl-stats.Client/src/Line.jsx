@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './App.css'; 
+import './App.css';
 
 const getStatusClass = (description) => {
     const statusMap = {
@@ -15,56 +15,56 @@ const getStatusClass = (description) => {
 
 const isDelayed = (statuses) => {
     for (let status of statuses) {
-        if (status.statusSeverityDescription.includes('Delay') ||
+        if (
+            status.statusSeverityDescription.includes('Delay') ||
             status.statusSeverityDescription.includes('Closure') ||
-            status.statusSeverityDescription.includes('Suspended')) {
-            return true; 
+            status.statusSeverityDescription.includes('Suspended')
+        ) {
+            return true;
         }
     }
     return false;
 };
 
-function LineStatus({ line, index, toggleStatusDetails, expandedStatusRows }) {
+function LineStatusRow({ line, toggleStatusDetails, expandedStatusRows }) {
     const statuses = line.lineStatuses || [];
     const delayed = isDelayed(statuses);
 
-    return (
-        <>
-            <tr>
-                <td>{line.name}</td>
-                <td onClick={() => toggleStatusDetails(index)}>
-                    {statuses.map((status, i) => (
-                        <div
-                            className={getStatusClass(status.statusSeverityDescription)}
-                            key={i}
-                        >
-                            {status.statusSeverityDescription}
-                        </div>
-                    ))}
+    return [
+        <tr key="main">
+            <td>{line.name}</td>
+            <td onClick={() => toggleStatusDetails(line.id)}>
+                {statuses.map((status, i) => (
+                    <div
+                        className={getStatusClass(status.statusSeverityDescription)}
+                        key={i}
+                    >
+                        {status.statusSeverityDescription}
+                    </div>
+                ))}
+            </td>
+        </tr>,
+
+        delayed && expandedStatusRows[line.id] && (
+            <tr key="details">
+                <td colSpan="2">
+                    {statuses
+                        .filter((status) => {
+                            const keywords = ['Delay', 'Closure', 'Suspended'];
+                            return keywords.some((keyword) =>
+                                status.statusSeverityDescription.includes(keyword)
+                            );
+                        })
+                        .map((status, i) => (
+                            <p key={i}>{status.reason}</p>
+                        ))}
                 </td>
             </tr>
-
-            {expandedStatusRows[index] && delayed && (
-                <tr>
-                    <td colSpan="2">
-                        {statuses
-                            .filter(status => {
-                                const keywords = ['Delay', 'Closure', 'Suspended'];
-                                return keywords.some(keyword =>
-                                    status.statusSeverityDescription.includes(keyword)
-                                );
-                            })
-                            .map((status, i) => (
-                                <p key={i}>{status.reason}</p>
-                            ))}
-                    </td>
-                </tr>
-            )}
-        </>
-    );
+        )
+    ];
 }
 
-function GetLine() {
+function LineStatusTable() {
     const [lines, setLines] = useState([]);
     const [expandedStatusRows, setExpandedStatusRows] = useState({});
     const [loading, setLoading] = useState(true);
@@ -84,21 +84,21 @@ function GetLine() {
                     setLoading(false);
                 }
             } catch (error) {
-                console.error('Error fetching line data:', error); 
-                setError('Error fetching line data:',error);
+                console.error('Error fetching line data:', error);
+                setError('An unexpected error occurred while fetching line data.');
                 setLoading(false);
             }
         };
 
         fetchLineData();
         const interval = setInterval(fetchLineData, 30000);
-        return () => clearInterval(interval); 
+        return () => clearInterval(interval);
     }, []);
 
-    const toggleStatusDetails = (index) => {
-        setExpandedStatusRows(prev => ({
+    const toggleStatusDetails = (id) => {
+        setExpandedStatusRows((prev) => ({
             ...prev,
-            [index]: !prev[index]
+            [id]: !prev[id]
         }));
     };
 
@@ -113,12 +113,17 @@ function GetLine() {
 
         return (
             <table className="table" aria-labelledby="tableLabel">
+                <thead>
+                    <tr>
+                        <th>Line</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
                 <tbody>
-                    {lines.map((line, index) => (
-                        <LineStatus
-                            key={index} 
+                    {lines.map((line) => (
+                        <LineStatusRow
+                            key={line.id}
                             line={line}
-                            index={index}
                             toggleStatusDetails={toggleStatusDetails}
                             expandedStatusRows={expandedStatusRows}
                         />
@@ -135,4 +140,4 @@ function GetLine() {
     );
 }
 
-export default GetLine;
+export default LineStatusTable;

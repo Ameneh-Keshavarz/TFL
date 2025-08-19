@@ -1,42 +1,76 @@
-﻿import { useState, useEffect } from 'react';
+﻿import { useState, useEffect, useCallback } from 'react';
 import './App.css';
 
-function JourneyForm({ formData, fromSuggestions, toSuggestions, onFormSubmit, onInputChange }) {
+function SuggestionItem({ suggestion, field, onSelect }) {
+    return (
+        <li
+            className="autocomplete-item"
+            onClick={() => onSelect(field, suggestion)}
+        >
+            {suggestion.commonName}
+        </li>
+    );
+}
+
+function JourneyForm({
+    formData,
+    fromSuggestions,
+    toSuggestions,
+    onFormSubmit,
+    onInputChange,
+    onSelectSuggestion,
+}) {
     return (
         <form className="form journey-form" onSubmit={onFormSubmit}>
-            <label htmlFor="from">From:</label>
-            <input
-                id="from"
-                type="text"
-                name="from"
-                value={formData.from.name}
-                onChange={onInputChange}
-                required
-                list="from-suggestions"
-                autoComplete="off"
-            />
-            <datalist id="from-suggestions">
-                {fromSuggestions.map((suggestion) => (
-                    <option key={suggestion.naptanId} value={suggestion.commonName} />
-                ))}
-            </datalist>
+            <div className="form-row relative">
+                <input
+                    id="from"
+                    type="text"
+                    name="from"
+                    value={formData.from.name}
+                    onChange={onInputChange}
+                    required
+                    autoComplete="off"
+                    placeholder="From:"
+                />
+                {fromSuggestions.length > 0 && (
+                    <ul className="suggestion-list">
+                        {fromSuggestions.map(s => (
+                            <SuggestionItem
+                                key={s.naptanId}
+                                suggestion={s}
+                                field="from"
+                                onSelect={onSelectSuggestion}
+                            />
+                        ))}
+                    </ul>
+                )}
+            </div>
 
-            <label htmlFor="to">To:</label>
-            <input
-                id="to"
-                type="text"
-                name="to"
-                value={formData.to.name}
-                onChange={onInputChange}
-                required
-                list="to-suggestions"
-                autoComplete="off"
-            />
-            <datalist id="to-suggestions">
-                {toSuggestions.map((suggestion) => (
-                    <option key={suggestion.naptanId} value={suggestion.commonName} />
-                ))}
-            </datalist>
+            <div className="form-row relative">
+                <input
+                    id="to"
+                    type="text"
+                    name="to"
+                    value={formData.to.name}
+                    onChange={onInputChange}
+                    required
+                    autoComplete="off"
+                    placeholder="To"
+                />
+                {toSuggestions.length > 0 && (
+                    <ul className="suggestion-list">
+                        {toSuggestions.map(s => (
+                            <SuggestionItem
+                                key={s.naptanId}
+                                suggestion={s}
+                                field="to"
+                                onSelect={onSelectSuggestion}
+                            />
+                        ))}
+                    </ul>
+                )}
+            </div>
 
             <button className="button" type="submit">Plan Journey</button>
         </form>
@@ -76,12 +110,12 @@ function JourneyLeg({ leg }) {
     );
 }
 
-function GetJourney() {
+function JourneyPlanner() {
     const [formData, setFormData] = useState({
         from: { name: '', id: '' },
         to: { name: '', id: '' },
     });
-    const [stopPoints, setStopPoints] = useState([])
+    const [stopPoints, setStopPoints] = useState([]);
     const [fromSuggestions, setFromSuggestions] = useState([]);
     const [toSuggestions, setToSuggestions] = useState([]);
     const [journeys, setJourneys] = useState([]);
@@ -89,36 +123,58 @@ function GetJourney() {
     const [noJourneyFound, setNoJourneyFound] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const fetchStopPoints = async () => {
-        try {
-            const response = await fetch(`api/StopPoint/stopPointList`);
-            const data = await response.json();
-            setStopPoints(data);
-        } catch (error) {
-            console.error('Error in fetchStopPoints:', error);
-        }
-    }
+    useEffect(() => {
+        const fetchStopPoints = async () => {
+            try {
+                const response = await fetch(`api/StopPoint/stopPointList`);
+                const data = await response.json();
+                setStopPoints(data);
+            } catch (error) {
+                console.error('Error fetching stop points:', error);
+            }
+        };
+        fetchStopPoints();
+    }, []);
 
-    const handleChange = (e) => {
+    const handleChange = useCallback((e) => {
         const { name, value } = e.target;
-
-        const f = value.toLowerCase();
+        const lowerValue = value.toLowerCase();
         let suggestions = [];
+
         if (value.length > 2) {
-            suggestions = stopPoints.filter(s => s.commonName.toLowerCase().includes(f));
+            suggestions = stopPoints.filter(s =>
+                s.commonName.toLowerCase().includes(lowerValue)
+            );
         }
-        name === "from" ?
-            setFromSuggestions(suggestions) : setToSuggestions(suggestions);
-        const matched = suggestions.find(s => s.commonName.toLowerCase() === f);
-        setFormData((prev) => ({
+
+        if (name === "from") setFromSuggestions(suggestions);
+        if (name === "to") setToSuggestions(suggestions);
+
+        const matched = suggestions.find(s => s.commonName.toLowerCase() === lowerValue);
+
+        setFormData(prev => ({
             ...prev,
             [name]: {
                 name: value,
                 id: matched ? matched.naptanId : ''
             }
         }));
-    };
-    const handleSubmit = async (e) => {
+    }, [stopPoints]);
+
+    const handleSelectSuggestion = useCallback((field, suggestion) => {
+        setFormData(prev => ({
+            ...prev,
+            [field]: {
+                name: suggestion.commonName,
+                id: suggestion.naptanId,
+            },
+        }));
+
+        if (field === 'from') setFromSuggestions([]);
+        if (field === 'to') setToSuggestions([]);
+    }, []);
+
+    const handleSubmit = useCallback(async (e) => {
         e.preventDefault();
         setShowJourney(false);
         setNoJourneyFound(false);
@@ -155,18 +211,14 @@ function GetJourney() {
                 return;
             }
 
-            const responseData = await response.json();
-            setJourneys(responseData);
+            const data = await response.json();
+            setJourneys(data);
             setShowJourney(true);
         } catch (error) {
             console.error('Error sending journey data:', error);
             setErrorMessage('Something went wrong. Please check your connection and try again.');
         }
-    };
-
-    useEffect(() => {
-        fetchStopPoints();
-    }, []);
+    }, [formData]);
 
     return (
         <div className="container">
@@ -178,6 +230,7 @@ function GetJourney() {
                 toSuggestions={toSuggestions}
                 onFormSubmit={handleSubmit}
                 onInputChange={handleChange}
+                onSelectSuggestion={handleSelectSuggestion}
             />
 
             {errorMessage && (
@@ -193,4 +246,4 @@ function GetJourney() {
     );
 }
 
-export default GetJourney;
+export default JourneyPlanner;
