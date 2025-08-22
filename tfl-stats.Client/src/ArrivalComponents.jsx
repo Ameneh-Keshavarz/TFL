@@ -13,6 +13,7 @@ export function StationMarker({ x, y, r = 5, fill = "#000", stroke = "#fff", str
         />
     );
 }
+StationMarker.displayName = "StationMarker";
 
 export function LineSegment({ x1, y1, x2, y2, stroke = "#333", strokeWidth = 4, strokeLinecap = "round", onClick }) {
     return (
@@ -24,37 +25,35 @@ export function LineSegment({ x1, y1, x2, y2, stroke = "#333", strokeWidth = 4, 
             stroke={stroke}
             strokeWidth={strokeWidth}
             strokeLinecap={strokeLinecap}
+            vectorEffect="non-scaling-stroke"
             onClick={onClick}
         />
     );
 }
+LineSegment.displayName = "LineSegment";
 
-export function Station({
+export function StationName({
     x,
     y,
     name,
-    markerProps = {},
+    dx = 6,          
+    dy = 4,          
     labelProps = {},
     onClick
 }) {
-    const fixedLabelX = 60; 
-
     return (
-        <g onClick={onClick} style={{ cursor: onClick ? "pointer" : "default" }}>
-            <StationMarker x={x} y={y} {...markerProps} />
-            {name && (
-                <text
-                    x={fixedLabelX}
-                    y={y}
-                    fontSize={10}
-                    fill="#111"
-                    dominantBaseline="middle"
-                    textAnchor="start"
-                    {...labelProps}
-                >
-                    {name}
-                </text>
-            )}
-        </g>
+        <text
+            x={x + dx}
+            y={y + dy}
+            fontSize={14}
+            textAnchor="start"
+            fill="#000"
+            style={{ userSelect: "none", cursor: onClick ? "pointer" : "default" }}
+            onClick={onClick}
+            {...labelProps}
+        >
+            {name}
+        </text>
     );
 }
+StationName.displayName = "StationName";
