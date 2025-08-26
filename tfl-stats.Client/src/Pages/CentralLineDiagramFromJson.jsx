@@ -1,6 +1,6 @@
 import React from "react";
 import data from "../Data/central.json"; 
-import { LineSegment, StationMarker, StationName } from "../Components/Arrival.jsx";
+import { LineSegment, StationMarker, StationName } from "../Components/LineDiagram.jsx";
 
 export default function CentralLineFromJson() {
     const SCALE = 20;
@@ -30,6 +30,7 @@ export default function CentralLineFromJson() {
             X: el.Col * SCALE,
             Y: el.Row * SCALE,
             name: el.Name ?? `Station ${i + 1}`, 
+            url: el.Url
         }));
 
     const xs = [
@@ -97,6 +98,7 @@ export default function CentralLineFromJson() {
                     x={n.X}
                     y={n.Y}
                     name={n.name}
+                    url={n.url}
                 />
             ))}
         </svg>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineSegment, StationMarker,StationName } from '../Components/Arrival';
+import { LineSegment, StationMarker,StationName } from '../Components/LineDiagram';
 export const content = [ 
 <StationMarker
   key={`marker-0`}

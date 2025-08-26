@@ -1,5 +1,5 @@
 ﻿import { content } from "../Data/central.jsx";
-import { LineSegment, StationMarker, StationName } from "../Components/Arrival.jsx";
+import { LineSegment, StationMarker, StationName } from "../Components/LineDiagram.jsx";
 
 export default function CentralLineDiagram() {
     const SCALE = 20;
