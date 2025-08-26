@@ -1,41 +1,41 @@
-﻿import { content } from "./central.jsx";
-import { LineSegment, StationMarker, StationName } from "./ArrivalComponents.jsx";
+import React from "react";
+import data from "../Data/central.json"; 
+import { LineSegment, StationMarker, StationName } from "../Components/Arrival.jsx";
 
-export default function CentralLineDiagram() {
+export default function CentralLineFromJson() {
     const SCALE = 20;
 
-    const stops = content
-        .filter(el => el?.type?.displayName === "StationMarker")
+    const stops = data
+        .filter(el => el.Type === "marker")
         .map((el, i) => ({
             id: i,
-            X: el.props.x * SCALE,
-            Y: el.props.y * SCALE,
+            X: el.Col * SCALE,
+            Y: el.Row * SCALE,
         }));
 
-    const connections = content
-        .filter(el => el?.type?.displayName === "LineSegment")
+    const connections = data
+        .filter(el => el.Type === "trackSection")
         .map((el, i) => ({
             id: i,
-            X0: el.props.x1 * SCALE,
-            Y0: el.props.y1 * SCALE,
-            X1: el.props.x2 * SCALE,
-            Y1: el.props.y2 * SCALE,
+            X0: el.Col * SCALE,
+            Y0: (el.Row-1) * SCALE,
+            X1: el.ColEnd * SCALE,
+            Y1: el.Row * SCALE,
         }));
 
-    const names = content
-        .filter(el => el?.type?.displayName === "StationName")
+    const names = data
+        .filter(el => el.Type === "stationName")
         .map((el, i) => ({
             id: i,
-            X: el.props.x * SCALE,
-            Y: el.props.y * SCALE,
-            name: el.props.name,
-            labelProps: el.props.labelProps ?? {}
+            X: el.Col * SCALE,
+            Y: el.Row * SCALE,
+            name: el.Name ?? `Station ${i + 1}`, 
         }));
 
     const xs = [
         ...stops.map(s => s.X),
         ...connections.flatMap(c => [c.X0, c.X1]),
-        ...names.map(n => n.X + 100), 
+        ...names.map(n => n.X + 250),
     ];
     const ys = [
         ...stops.map(s => s.Y),
@@ -65,6 +65,7 @@ export default function CentralLineDiagram() {
                 height: "auto",
                 display: "block",
                 background: "transparent",
+                border: "2px solid green"
             }}
         >
             {connections.map(c => (
@@ -76,7 +77,6 @@ export default function CentralLineDiagram() {
                     y2={c.Y1}
                     stroke="#E32017"
                     strokeWidth={3}
-                    strokeLinecap="round"
                 />
             ))}
 
@@ -97,7 +97,6 @@ export default function CentralLineDiagram() {
                     x={n.X}
                     y={n.Y}
                     name={n.name}
-                    labelProps={n.labelProps}
                 />
             ))}
         </svg>

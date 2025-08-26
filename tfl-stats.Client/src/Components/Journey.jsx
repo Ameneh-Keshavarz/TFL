@@ -1,5 +1,5 @@
 ﻿import { useState, useEffect, useCallback } from 'react';
-import './App.css';
+import '../App.css';
 
 function SuggestionItem({ suggestion, field, onSelect }) {
     return (
