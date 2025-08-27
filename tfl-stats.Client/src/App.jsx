@@ -1,7 +1,7 @@
 ﻿import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import LineStatusTable from './Components/Line';
 import JourneyPlanner from './Components/Journey';
-import CentralLineDiagram from './Pages/CentralLineDiagram';
+import LineSelector from './Pages/LineSelector';
 import CentralLineFromJson from './Pages/CentralLineDiagramFromJson';
 
 import './App.css';
@@ -27,16 +27,10 @@ function App() {
                         Line Status
                     </Link>
                     <Link
-                        to="/CentralLineDiagram"
-                        className={`nav-link ${location.pathname === '/CentralLineDiagram' ? 'active' : ''}`}
+                        to="/LineSelector"
+                        className={`nav-link ${location.pathname === '/LineSelector' ? 'active' : ''}`}
                     >
-                        Central Line Diagram
-                    </Link>
-                    <Link
-                        to="/CentralLineDiagramFromJson"
-                        className={`nav-link ${location.pathname === '/CentralLineDiagramFromJson' ? 'active' : ''}`}
-                    >
-                        Central Line Diagram From JSON
+                        Line Selector
                     </Link>
                 </nav>
             </header>
@@ -46,7 +40,7 @@ function App() {
                     <Route path="/" element={<JourneyPlanner />} />
                     <Route path="/journey" element={<JourneyPlanner />} />
                     <Route path="/lines" element={<LineStatusTable />} />
-                    <Route path="/CentralLineDiagram" element={<CentralLineDiagram />} />
+                    <Route path="/LineSelector" element={<LineSelector />} />
                     <Route path="/CentralLineDiagramFromJson" element={<CentralLineFromJson />} />
 
                 </Routes>

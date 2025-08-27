@@ -1,15 +1,17 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 import { LineSegment, StationMarker, StationName } from "../Components/LineDiagram.jsx";
 
-export default function CentralLineFromJson() {
+export default function LineFromJson({ lineName }) {
     const [lineDiagram, setLineDiagram] = useState([]);
+    console.log(lineName);
 
     useEffect(() => {
         const fetchLineData = async () => {
             try {
-                const response = await fetch('api/LineDiagram?lineName=district');
+                const response = await fetch(`api/LineDiagram?lineName=${lineName}`);
                 if (response.ok) {
                     const data = await response.json();
                     setLineDiagram(data);
@@ -21,7 +23,7 @@ export default function CentralLineFromJson() {
         };
 
         fetchLineData();
-    }, []);
+    }, [lineName]);
     const SCALE = 20;
 
     const stops = lineDiagram
@@ -125,3 +127,7 @@ export default function CentralLineFromJson() {
         </svg>
     );
 }
+
+LineFromJson.propTypes = {
+    lineName: PropTypes.string.isRequired
+};
