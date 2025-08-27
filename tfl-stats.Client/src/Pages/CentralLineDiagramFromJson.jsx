@@ -1,11 +1,30 @@
 import React from "react";
-import data from "../Data/central.json"; 
+import { useEffect, useState } from "react";
+
 import { LineSegment, StationMarker, StationName } from "../Components/LineDiagram.jsx";
 
 export default function CentralLineFromJson() {
+    const [lineDiagram, setLineDiagram] = useState([]);
+
+    useEffect(() => {
+        const fetchLineData = async () => {
+            try {
+                const response = await fetch('api/LineDiagram?lineName=district');
+                if (response.ok) {
+                    const data = await response.json();
+                    setLineDiagram(data);
+                } 
+            } catch (error) {
+                console.error('Error fetching line diagram data:', error);
+               
+            }
+        };
+
+        fetchLineData();
+    }, []);
     const SCALE = 20;
 
-    const stops = data
+    const stops = lineDiagram
         .filter(el => el.Type === "marker")
         .map((el, i) => ({
             id: i,
@@ -13,7 +32,7 @@ export default function CentralLineFromJson() {
             Y: el.Row * SCALE,
         }));
 
-    const connections = data
+    const connections = lineDiagram
         .filter(el => el.Type === "trackSection")
         .map((el, i) => ({
             id: i,
@@ -23,7 +42,7 @@ export default function CentralLineFromJson() {
             Y1: el.Row * SCALE,
         }));
 
-    const names = data
+    const names = lineDiagram
         .filter(el => el.Type === "stationName")
         .map((el, i) => ({
             id: i,
@@ -48,6 +67,8 @@ export default function CentralLineFromJson() {
     const maxX = xs.length ? Math.max(...xs) : 200 * SCALE;
     const minY = ys.length ? Math.min(...ys) : 0;
     const maxY = ys.length ? Math.max(...ys) : 700 * SCALE;
+
+    console.log(minX,maxX,minY,maxY);
 
     const padding = 12;
     const vbX = minX - padding;

@@ -14,6 +14,64 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Data\bakerloo-RouteSequence.json" />
+    <Content Remove="Data\central-RouteSequence.json" />
+    <Content Remove="Data\circle-RouteSequence.json" />
+    <Content Remove="Data\district-RouteSequence.json" />
+    <Content Remove="Data\dlr-RouteSequence.json" />
+    <Content Remove="Data\elizabeth-RouteSequence.json" />
+    <Content Remove="Data\hammersmith-city-RouteSequence.json" />
+    <Content Remove="Data\jubilee-RouteSequence.json" />
+    <Content Remove="Data\metropolitan-RouteSequence.json" />
+    <Content Remove="Data\northern-RouteSequence.json" />
+    <Content Remove="Data\piccadilly-RouteSequence.json" />
+    <Content Remove="Data\victoria-RouteSequence.json" />
+    <Content Remove="Data\waterloo-city-RouteSequence.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Data\bakerloo-RouteSequence.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\central-RouteSequence.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\circle-RouteSequence.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\district-RouteSequence.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\dlr-RouteSequence.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\elizabeth-RouteSequence.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\hammersmith-city-RouteSequence.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\jubilee-RouteSequence.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\metropolitan-RouteSequence.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\northern-RouteSequence.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\piccadilly-RouteSequence.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\victoria-RouteSequence.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\waterloo-city-RouteSequence.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
       <Version>8.*-*</Version>
@@ -32,6 +90,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\tfl-stats.Core\tfl-stats.Core.csproj" />
+    <ProjectReference Include="..\TflNetworkBuilder\TflNetworkBuilder.csproj" />
   </ItemGroup>
 
 </Project>

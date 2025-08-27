@@ -47,6 +47,7 @@ namespace tfl_stats.Server
             builder.Services.AddScoped<LineService>();
             builder.Services.AddScoped<StopPointService>();
             builder.Services.AddScoped<JourneyService>();
+            builder.Services.AddSingleton<LineDiagramService>();
 
             var app = builder.Build();
 
