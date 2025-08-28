@@ -48,6 +48,8 @@ namespace tfl_stats.Server
             builder.Services.AddScoped<StopPointService>();
             builder.Services.AddScoped<JourneyService>();
             builder.Services.AddSingleton<LineDiagramService>();
+            // Not sure if it should be Sigleton
+            builder.Services.AddSingleton<ArrivalService>();
 
             var app = builder.Build();
 
