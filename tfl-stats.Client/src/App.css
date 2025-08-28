@@ -282,6 +282,7 @@ nav {
     flex-wrap: wrap;
     justify-content: center;
     gap: 5px;
+    margin-left:30px;
 }
 
 .box {
@@ -366,6 +367,7 @@ nav {
     margin-top: 20px; /* space between buttons and SVG */
     display: block;
     width: 100%;
+    margin-left: 30px;
 }
 
 

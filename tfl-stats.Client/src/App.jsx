@@ -2,7 +2,7 @@
 import LineStatusTable from './Components/Line';
 import JourneyPlanner from './Components/Journey';
 import LineSelector from './Pages/LineSelector';
-import CentralLineFromJson from './Pages/CentralLineDiagramFromJson';
+import CentralLineFromJson from './Pages/LineDiagramFetcher';
 
 import './App.css';
 

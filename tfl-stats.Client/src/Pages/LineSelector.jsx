@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LineFromJson from "./CentralLineDiagramFromJson";
+import LineFromJson from "./LineDiagramFetcher";
 
 export default function LineSelector() {
     const lines = [

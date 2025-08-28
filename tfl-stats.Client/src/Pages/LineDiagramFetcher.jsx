@@ -1,42 +1,71 @@
-﻿import { content } from "../Data/central.jsx";
-import { LineSegment, StationMarker, StationName } from "../Components/LineDiagram.jsx";
+import React from "react";
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
-export default function CentralLineDiagram() {
+import { LineSegment, StationMarker, StationName } from "../Components/LineDiagramComponents.jsx";
+
+export default function LineFromJson({ lineName }) {
+    const [lineDiagram, setLineDiagram] = useState([]);
+    console.log(lineName);
+
+    useEffect(() => {
+        const fetchLineData = async () => {
+            try {
+                const response = await fetch(`api/LineDiagram?lineName=${lineName}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    setLineDiagram(data);
+                } 
+            } catch (error) {
+                console.error('Error fetching line diagram data:', error);
+               
+            }
+        };
+
+        fetchLineData();
+    }, [lineName]);
     const SCALE = 20;
 
-    const stops = content
-        .filter(el => el?.type?.displayName === "StationMarker")
+    const stops = lineDiagram
+        .filter(el => el.Type === "marker")
         .map((el, i) => ({
             id: i,
-            X: el.props.x * SCALE,
-            Y: el.props.y * SCALE,
+            X: el.Col * SCALE,
+            Y: el.Row * SCALE,
         }));
 
-    const connections = content
-        .filter(el => el?.type?.displayName === "LineSegment")
+    const connections = lineDiagram
+        .filter(el => el.Type === "trackSection")
         .map((el, i) => ({
             id: i,
-            X0: el.props.x1 * SCALE,
-            Y0: el.props.y1 * SCALE,
-            X1: el.props.x2 * SCALE,
-            Y1: el.props.y2 * SCALE,
+            X0: el.Col * SCALE,
+            Y0: (el.Row-1) * SCALE,
+            X1: el.ColEnd * SCALE,
+            Y1: el.Row * SCALE,
         }));
 
-    const names = content
-        .filter(el => el?.type?.displayName === "StationName")
+    const names = lineDiagram
+        .filter(el => el.Type === "stationName")
         .map((el, i) => ({
             id: i,
-            X: el.props.x * SCALE,
-            Y: el.props.y * SCALE,
-            name: el.props.name,
-            labelProps: el.props.labelProps ?? {}
+            X: el.Col * SCALE,
+            Y: el.Row * SCALE,
+            name: el.Name ?? `Station ${i + 1}`, 
+            url: el.Url
         }));
 
+    //const xs = [
+    //    ...stops.map(s => s.X),
+    //    ...connections.flatMap(c => [c.X0, c.X1]),
+    //    ...names.map(n => n.X + 250),
+    //];
+    const fontSize = 14; 
     const xs = [
         ...stops.map(s => s.X),
         ...connections.flatMap(c => [c.X0, c.X1]),
-        ...names.map(n => n.X + 250), 
+        ...names.map(n => n.X + n.name.length * fontSize * 0.6),
     ];
+
     const ys = [
         ...stops.map(s => s.Y),
         ...connections.flatMap(c => [c.Y0, c.Y1]),
@@ -47,6 +76,8 @@ export default function CentralLineDiagram() {
     const maxX = xs.length ? Math.max(...xs) : 200 * SCALE;
     const minY = ys.length ? Math.min(...ys) : 0;
     const maxY = ys.length ? Math.max(...ys) : 700 * SCALE;
+
+    console.log(minX,maxX,minY,maxY);
 
     const padding = 12;
     const vbX = minX - padding;
@@ -65,9 +96,8 @@ export default function CentralLineDiagram() {
                 height: "auto",
                 display: "block",
                 background: "transparent",
-                border: "2px solid blue" 
+                border: "2px solid green"
             }}
-            
         >
             <rect
                 x={vbX}
@@ -88,7 +118,6 @@ export default function CentralLineDiagram() {
                     y2={c.Y1}
                     stroke="#E32017"
                     strokeWidth={3}
-                    strokeLinecap="round"
                 />
             ))}
 
@@ -109,9 +138,13 @@ export default function CentralLineDiagram() {
                     x={n.X}
                     y={n.Y}
                     name={n.name}
-                    labelProps={n.labelProps}
+                    url={n.url}
                 />
             ))}
         </svg>
     );
 }
+
+LineFromJson.propTypes = {
+    lineName: PropTypes.string.isRequired
+};
