@@ -1,11 +1,13 @@
-import React from "react";
+﻿import React from "react";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import { LineSegment, StationMarker, StationName } from "../Components/LineDiagramComponents.jsx";
+import { TrainPrediction } from "../Components/TrainPrediction.jsx";
 
-export default function LineFromJson({ lineName }) {
+export default function LineDiagramFetcher({ lineName }) {
     const [lineDiagram, setLineDiagram] = useState([]);
+    const [arrival, SetArrival] = useState([]);
     console.log(lineName);
 
     useEffect(() => {
@@ -24,7 +26,23 @@ export default function LineFromJson({ lineName }) {
 
         fetchLineData();
     }, [lineName]);
+
     const SCALE = 20;
+
+    const FetchArrivals=async (stationId, line)=>{
+
+        try {
+            const response = await fetch(`api/Arrival?lineName=${line}&stationId=${stationId}`);
+            if (response.ok) {
+                const data = await response.json();
+                SetArrival(data);
+            }
+        }
+        catch (error) {
+            console.error('Error fetching Arrival data:', error);
+        }
+
+    }
 
     const stops = lineDiagram
         .filter(el => el.Type === "marker")
@@ -50,6 +68,7 @@ export default function LineFromJson({ lineName }) {
             id: i,
             X: el.Col * SCALE,
             Y: el.Row * SCALE,
+            stationId: el.StationId,
             name: el.Name ?? `Station ${i + 1}`, 
             url: el.Url
         }));
@@ -86,65 +105,80 @@ export default function LineFromJson({ lineName }) {
     const vbH = (maxY - minY) + padding * 2;
 
     return (
-        <svg
-            viewBox={`${vbX} ${vbY} ${vbW} ${vbH}`}
-            preserveAspectRatio="xMidYMin meet"
-            width={420}
-            height={900}
-            style={{
-                maxWidth: "100%",
-                height: "auto",
-                display: "block",
-                background: "transparent",
-                border: "2px solid green"
-            }}
-        >
-            <rect
-                x={vbX}
-                y={vbY}
-                width={vbW}
-                height={vbH}
-                fill="none"
-                stroke="red"
-                strokeDasharray="4"
-            />
+        <div className="diagram-layout">
+            <svg
+                viewBox={`${vbX} ${vbY} ${vbW} ${vbH}`}
+                preserveAspectRatio="xMidYMin meet"
+                width={420}
+                height={900}
+                style={{
+                    maxWidth: "100%",
+                    height: "auto",
+                    display: "block",
+                    background: "transparent",
+                }}
+            >
+                {connections.map(c => (
+                    <LineSegment
+                        key={`seg-${c.id}`}
+                        x1={c.X0}
+                        y1={c.Y0}
+                        x2={c.X1}
+                        y2={c.Y1}
+                        stroke="#E32017"
+                        strokeWidth={3}
+                    />
+                ))}
 
-            {connections.map(c => (
-                <LineSegment
-                    key={`seg-${c.id}`}
-                    x1={c.X0}
-                    y1={c.Y0}
-                    x2={c.X1}
-                    y2={c.Y1}
-                    stroke="#E32017"
-                    strokeWidth={3}
-                />
-            ))}
+                {stops.map(s => (
+                    <StationMarker
+                        key={`stop-${s.id}`}
+                        x={s.X}
+                        y={s.Y}
+                        r={3}
+                        stroke="#E32017"
+                        strokeWidth={2}
+                    />
+                ))}
 
-            {stops.map(s => (
-                <StationMarker
-                    key={`stop-${s.id}`}
-                    x={s.X}
-                    y={s.Y}
-                    r={3}
-                    stroke="#E32017"
-                    strokeWidth={2}
-                />
-            ))}
+                {names.map(n => (
+                    <StationName
+                        key={`name-${n.id}`}
+                        x={n.X}
+                        y={n.Y}
+                        name={n.name}
+                        url={n.url}
+                        onClick={() => FetchArrivals(n.stationId, lineName)}
+                    />
+                ))}
+            </svg>
 
-            {names.map(n => (
-                <StationName
-                    key={`name-${n.id}`}
-                    x={n.X}
-                    y={n.Y}
-                    name={n.name}
-                    url={n.url}
-                />
-            ))}
-        </svg>
+            <div className="arrivals">
+                {arrival.length > 0 ? (
+                    arrival.map((pred, i) => (
+                        <TrainPrediction
+                            key={i}
+                            lineName={pred.lineName}
+                            platformName={pred.platformName}
+                            destinationName={pred.destinationName}
+                            destinationNaptanId={pred.destinationNaptanId}
+                            timeToStation={pred.timeToStation}
+                        />
+                    ))
+                ) : (
+                    <p style={{ color: "gray", marginTop: "10px" }}>
+                        Click a station to see arrivals
+                    </p>
+                )}
+            </div>
+        </div>
     );
+
+
 }
 
-LineFromJson.propTypes = {
+
+
+LineDiagramFetcher.propTypes = {
     lineName: PropTypes.string.isRequired
 };

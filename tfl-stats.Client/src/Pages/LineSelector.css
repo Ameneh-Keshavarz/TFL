@@ -1,0 +1,92 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin-left: 30px;
+}
+
+.box {
+    width: 140px;
+    height: 40px;
+    border: 2px solid #56c5b6;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2f3e46;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.bakerloo {
+    background-color: #d9a07d; /* lightened Bakerloo brown */
+    color: #2f3e46;
+}
+
+.central {
+    background-color: #f28b82; /* softer red */
+    color: #2f3e46;
+}
+
+.circle {
+    background-color: #ffe066; /* pastel yellow */
+    color: #2f3e46;
+}
+
+.district {
+    background-color: #80cfa9; /* light green */
+    color: #2f3e46;
+}
+
+.hammersmith-city {
+    background-color: #f3c4d6; /* soft pink */
+    color: #2f3e46;
+}
+
+.jubilee {
+    background-color: #c2c2c2; /* lighter grey */
+    color: #2f3e46;
+}
+
+.metropolitan {
+    background-color: #c17ca9; /* soft magenta */
+    color: #2f3e46;
+}
+
+.northern {
+    background-color: #a0a0a0; /* softened black/charcoal */
+    color: #2f3e46;
+}
+
+.piccadilly {
+    background-color: #7289da; /* softer royal blue */
+    color: #2f3e46;
+}
+
+.victoria {
+    background-color: #7ec8e3; /* light sky blue */
+    color: #2f3e46;
+}
+
+.waterloo-city {
+    background-color: #a0e4dc; /* aqua teal pastel */
+    color: #2f3e46;
+}
+
+.dlr {
+    background-color: #66d3c6; /* turquoise pastel */
+    color: #2f3e46;
+}
+
+.elizabeth {
+    background-color: #b8a2e0; /* lavender softened purple */
+    color: #2f3e46;
+}
+
+.diagram-container {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    margin-left: 30px;
+}

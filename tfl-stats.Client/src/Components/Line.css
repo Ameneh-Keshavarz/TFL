@@ -1,0 +1,72 @@
+.container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+    .table th,
+    .table td {
+        padding: 14px 20px;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .table th {
+        background-color: #e0f7f4;
+        color: #2f3e46;
+    }
+
+    .table td {
+        color: #2f3e46;
+        cursor: pointer;
+    }
+
+        .table td div {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+
+    .table tr:hover {
+        background-color: #f2fcfa;
+        transition: background-color 0.3s ease;
+    }
+
+.status-good {
+    background-color: #e0f7f4;
+    color: #2e7d6e;
+}
+
+.status-minordelay {
+    background-color: #f9f3d2;
+    color: #b58e00;
+}
+
+.status-severdelay,
+.status-suspension,
+.status-closure {
+    background-color: #fdecea;
+    color: #c44a4a;
+}
+
+.status-reason {
+    color: #b03a3a;
+    font-style: italic;
+    margin-top: 5px;
+    font-size: 0.95em;
+    line-height: 1.4;
+}

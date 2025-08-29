@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import LineFromJson from "./LineDiagramFetcher";
+import LineDiagramFetcher from "./LineDiagramFetcher";
+import "./LineSelector.css";
 
 export default function LineSelector() {
     const lines = [
@@ -31,7 +32,7 @@ export default function LineSelector() {
             }
 
             <div className="diagram-container">
-                <LineFromJson lineName={selectedLine} />
+                <LineDiagramFetcher lineName={selectedLine} />
             </div>
 
             
