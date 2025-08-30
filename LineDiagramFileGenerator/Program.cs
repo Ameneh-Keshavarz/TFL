@@ -37,7 +37,7 @@ namespace LineDiagramFileGenerator
                 Row = rowNo,
                 Col = colNo,
                 Name = station?.MatchedStop.FirstOrDefault()?.Name ?? string.Empty,
-                StationId = station?.StationId ?? string.Empty,
+                StationId = station.MatchedStop.FirstOrDefault()?.Id ?? string.Empty,
                 Url = $"/stations/{station?.StationId}"
             });
         }
