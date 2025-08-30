@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import { LineSegment, StationMarker, StationName } from "../Components/LineDiagramComponents.jsx";
 import { TrainPrediction } from "../Components/TrainPrediction.jsx";
+import "./LineDiagramFetcher.css"
 
 export default function LineDiagramFetcher({ lineName }) {
     const [lineDiagram, setLineDiagram] = useState([]);
