@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LineDiagramFetcher from "./LineDiagramFetcher";
 import "./LineSelector.css";
+import { capitalize } from "../../utility/capitalize.jsx";
 
 export default function LineSelector() {
     const lines = [
@@ -38,13 +39,6 @@ export default function LineSelector() {
             
         </div>
     );
-}
-
-function capitalize(str) {
-    return str
-        .split("-")
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join("-");
 }
 
 

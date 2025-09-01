@@ -1,39 +1,7 @@
-.train-card {
-    background-color: #ffffff;
-    border: 1px solid #e0ecea;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 24px auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    max-width: 600px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-    .train-card:hover {
-        transform: scale(1.02);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-.train-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.train-line {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #2f3e46;
-}
-
-.train-platform {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #56c5b6;
-}
-
 .train-destination {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
     font-size: 1rem;
     color: #2f3e46;
     margin-bottom: 8px;
@@ -43,14 +11,9 @@
     font-weight: 600;
 }
 
-.destination-id {
-    font-size: 0.85rem;
-    color: #777;
-    margin-left: 6px;
-}
-
 .train-time {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     color: #0057b8; /* TfL blue */
+    margin-left: 10px; 
 }

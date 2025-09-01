@@ -4,7 +4,9 @@ import PropTypes from "prop-types";
 
 import { LineSegment, StationMarker, StationName } from "../Components/LineDiagramComponents.jsx";
 import { TrainPrediction } from "../Components/TrainPrediction.jsx";
-import "./LineDiagramFetcher.css"
+import "./LineDiagramFetcher.css";
+import { capitalize } from "../../utility/capitalize.jsx";
+
 
 export default function LineDiagramFetcher({ lineName }) {
     const [lineDiagram, setLineDiagram] = useState([]);
@@ -105,6 +107,16 @@ export default function LineDiagramFetcher({ lineName }) {
     const vbW = (maxX - minX) + padding * 2;
     const vbH = (maxY - minY) + padding * 2;
 
+    const arrivalsByPlatform = arrival.reduce((acc, pred) => {
+        if (!acc[pred.platformName])
+            acc[pred.platformName] = [];
+        acc[pred.platformName].push(pred);
+        return acc;
+
+    }, {});
+
+    console.log(arrivalsByPlatform);
+
     return (
         <div className="diagram-layout">
             <svg
@@ -155,23 +167,29 @@ export default function LineDiagramFetcher({ lineName }) {
             </svg>
 
             <div className="arrivals">
-                {arrival.length > 0 ? (
-                    arrival.map((pred, i) => (
-                        <TrainPrediction
-                            key={i}
-                            lineName={pred.lineName}
-                            platformName={pred.platformName}
-                            destinationName={pred.destinationName}
-                            destinationNaptanId={pred.destinationNaptanId}
-                            timeToStation={pred.timeToStation}
-                        />
-                    ))
-                ) : (
+                {Object.entries(arrivalsByPlatform).map(([platform, preds], i) => (
+                    <div key={i} className="platform-card">
+                        <h3 className="platform-header">{ capitalize(lineName)} - {platform}</h3>
+                        {preds.map((pred, j) => (
+                            <TrainPrediction
+                                key={j}
+                                lineName={pred.lineName}
+                                platformName={pred.platformName}
+                                destinationName={pred.destinationName}
+                                destinationNaptanId={pred.destinationNaptanId}
+                                timeToStation={pred.timeToStation}
+                            />
+                        ))}
+                    </div>
+                ))}
+
+                {arrival.length === 0 && (
                     <p style={{ color: "gray", marginTop: "10px" }}>
                         Click a station to see arrivals
                     </p>
                 )}
             </div>
+
         </div>
     );
 
