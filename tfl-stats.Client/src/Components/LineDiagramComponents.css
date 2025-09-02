@@ -1,0 +1,10 @@
+.station-name {
+    fill: #2f3e46; 
+    font-size: 14px;
+}
+.station-name.selected {
+    fill: #e32017; 
+    font-weight: bold;
+    color:aquamarine;
+
+}

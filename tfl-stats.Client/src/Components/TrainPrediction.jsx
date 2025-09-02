@@ -17,7 +17,7 @@ export function TrainPrediction({
             <div className="train-destination">
                 <span className="destination-name">{destinationName}</span>
                 <span className="train-time">
-                    {timeToStation !== null ? `${timeToStation} sec` : "No prediction"}
+                    {timeToStation !== null ? `${ConvertTime(timeToStation)}` : "No prediction"}
                 </span>
             </div>
             {/*<div className="train-time">*/}
@@ -25,4 +25,12 @@ export function TrainPrediction({
             {/*</div>*/}
         </div>
     );
+}
+
+function ConvertTime(arrivalTime) {
+
+    console.log(arrivalTime);
+
+    return (arrivalTime >= 60 ? `${Math.floor(arrivalTime / 60)} min` : `${ arrivalTime } sec`);
+
 }

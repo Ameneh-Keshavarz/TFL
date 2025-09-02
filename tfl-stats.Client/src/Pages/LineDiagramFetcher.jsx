@@ -10,7 +10,9 @@ import { capitalize } from "../../utility/capitalize.jsx";
 
 export default function LineDiagramFetcher({ lineName }) {
     const [lineDiagram, setLineDiagram] = useState([]);
-    const [arrival, SetArrival] = useState([]);
+    const [arrival, setArrival] = useState([]);
+    const [selectedStationId, setSelectedStationId] = useState(null);
+    // const [selectedStationName, setSelectedStationName] = useState("");
     console.log(lineName);
 
     useEffect(() => {
@@ -27,6 +29,10 @@ export default function LineDiagramFetcher({ lineName }) {
             }
         };
 
+        setArrival([]);
+        setSelectedStationId(null);
+        //setSelectedStationName("");
+
         fetchLineData();
     }, [lineName]);
 
@@ -38,7 +44,7 @@ export default function LineDiagramFetcher({ lineName }) {
             const response = await fetch(`api/Arrival?lineName=${line}&stationId=${stationId}`);
             if (response.ok) {
                 const data = await response.json();
-                SetArrival(data);
+                setArrival(data);
             }
         }
         catch (error) {
@@ -117,6 +123,7 @@ export default function LineDiagramFetcher({ lineName }) {
 
     console.log(arrivalsByPlatform);
 
+
     return (
         <div className="diagram-layout">
             <svg
@@ -129,6 +136,7 @@ export default function LineDiagramFetcher({ lineName }) {
                     height: "auto",
                     display: "block",
                     background: "transparent",
+                    marginTop: "24px",
                 }}
             >
                 {connections.map(c => (
@@ -161,16 +169,30 @@ export default function LineDiagramFetcher({ lineName }) {
                         y={n.Y}
                         name={n.name}
                         url={n.url}
-                        onClick={() => FetchArrivals(n.stationId, lineName)}
+                        onClick={() => {
+                            setSelectedStationId(n.stationId);
+                            //setSelectedStationName(n.name)
+                            FetchArrivals(n.stationId,lineName);
+                        }}
+                        isSelected={(selectedStationId == n.stationId)}
                     />
                 ))}
             </svg>
 
+            {/*{selectedStationName.length !== 0 && (*/}
+            {/*    <p style={{ color: "gray", marginTop: "5px" }}>*/}
+            {/*        {selectedStationName}*/}
+            {/*    </p>*/}
+            {/*)}*/}
+
+
             <div className="arrivals">
                 {Object.entries(arrivalsByPlatform).map(([platform, preds], i) => (
                     <div key={i} className="platform-card">
-                        <h3 className="platform-header">{ capitalize(lineName)} - {platform}</h3>
-                        {preds.map((pred, j) => (
+                        <h3 className="platform-header">{capitalize(lineName)} - {platform}</h3>
+                        {preds
+                            .sort((a, b) => a.timeToStation - b.timeToStation)
+                            .map((pred, j) => (
                             <TrainPrediction
                                 key={j}
                                 lineName={pred.lineName}

@@ -1,4 +1,5 @@
 ﻿import React from "react";
+import "./LineDiagramComponents.css"
 
 export function StationMarker({ x, y, r = 5, fill = "#000", stroke = "#fff", strokeWidth = 2, onClick }) {
     return (
@@ -39,7 +40,8 @@ export function StationName({
     dx = 6,          
     dy = 4,          
     labelProps = {},
-    onClick
+    onClick,
+    isSelected
 }) {
     return (
         <text
@@ -47,10 +49,10 @@ export function StationName({
             y={y + dy}
             fontSize={14}
             textAnchor="start"
-            fill="#000"
             style={{ userSelect: "none", cursor: onClick ? "pointer" : "default" }}
             onClick={onClick}
             {...labelProps}
+            className={`station-name ${isSelected ? 'selected' : ''}`}
         >
             {name}
         </text>
