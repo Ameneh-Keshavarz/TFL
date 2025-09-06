@@ -1,4 +1,5 @@
 using tfl_stats.Core.Client.Generated;
+using tfl_stats.Server.MiddleWare;
 using tfl_stats.Server.Services;
 using tfl_stats.Server.Services.Cache;
 
@@ -51,6 +52,8 @@ namespace tfl_stats.Server
             // Not sure if it should be Sigleton
             builder.Services.AddSingleton<ArrivalService>();
 
+            builder.Services.AddSingleton<ResponseRecorderService>();
+
             var app = builder.Build();
 
             app.UseDefaultFiles();
@@ -71,6 +74,7 @@ namespace tfl_stats.Server
             app.MapControllers();
 
             app.MapFallbackToFile("/index.html");
+            app.UseMiddleware<RecorderMiddleware>();
 
             app.Run();
 
