@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LineDiagramFetcher from "./LineDiagramFetcher";
+import LineDiagramFetcher from "../Components/LineDiagramFetcher.jsx";
 import "./LineSelector.css";
 import { capitalize } from "../../utility/capitalize.jsx";
 

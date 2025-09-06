@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-import { LineSegment, StationMarker, StationName } from "../Components/LineDiagramComponents.jsx";
-import { TrainPrediction } from "../Components/TrainPrediction.jsx";
+import { LineSegment, StationMarker, StationName } from "./LineDiagramComponents.jsx";
+import TrainPrediction from "./TrainPrediction.jsx";
 import "./LineDiagramFetcher.css";
 import { capitalize } from "../../utility/capitalize.jsx";
 

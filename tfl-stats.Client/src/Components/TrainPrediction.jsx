@@ -1,7 +1,7 @@
 import React from "react";
 import "./TrainPrediction.css";
 
-export function TrainPrediction({
+export default function TrainPrediction({
     //lineName,
     //platformName,
     destinationName,

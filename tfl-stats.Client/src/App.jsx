@@ -1,8 +1,8 @@
 ﻿import { Routes, Route, Link, useLocation } from 'react-router-dom';
-import LineStatusTable from './Components/Line';
-import JourneyPlanner from './Components/Journey';
+import LineStatusTable from './Pages/Line';
+import JourneyPlanner from './Pages/Journey';
 import LineSelector from './Pages/LineSelector';
-import CentralLineFromJson from './Pages/LineDiagramFetcher';
+import CentralLineFromJson from './Components/LineDiagramFetcher';
 
 import './App.css';
 
