@@ -221,5 +221,5 @@ export default function LineDiagramFetcher({ lineName }) {
 
 
 LineDiagramFetcher.propTypes = {
-    lineName: PropTypes.string.isRequired
+    lineName: PropTypes.string,
 };

@@ -20,7 +20,7 @@ export default function LineSelector() {
         "elizabeth"
     ];
 
-    const [selectedLine, setselectedLine] = useState("");
+    const [selectedLine, setselectedLine] = useState("bakerloo");
 
     return (
         <div className="row">
