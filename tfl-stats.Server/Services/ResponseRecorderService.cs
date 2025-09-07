@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Text.Json;
 
 namespace tfl_stats.Server.Services
 {
@@ -30,11 +31,35 @@ namespace tfl_stats.Server.Services
         public async Task SaveAsync()
         {
 
+            var json = JsonSerializer.Serialize(this._records,
+                new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                });
+            await File.WriteAllTextAsync("recorder.json", json);
         }
 
         public async Task LoadAsync()
         {
+            if (!File.Exists("recorder.json"))
+            {
+                _logger.LogWarning("Recorder file not found, skipping load.");
+                return;
+            }
 
+            var json = await File.ReadAllTextAsync("recorder.json");
+            if (string.IsNullOrWhiteSpace(json))
+            {
+                _logger.LogWarning("Recorder file is empty, skipping load.");
+                return;
+            }
+
+            var temp = JsonSerializer.Deserialize<ConcurrentDictionary<string, string>>(json);
+            if (temp != null)
+            {
+                _records = temp;
+                _logger.LogInformation("Loaded {count} recorded responses.", _records.Count);
+            }
         }
 
         public bool TryGetRecorded(string key, out string? response) =>

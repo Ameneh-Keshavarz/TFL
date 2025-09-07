@@ -14,11 +14,6 @@ namespace tfl_stats.Server.MiddleWare
         }
         public async Task InvokeAsync(HttpContext context)
         {
-            //if (context.Request.Path == "/api/recorder")
-            //{
-            //    ChangeSetting(context);
-            //    return;
-            //}
             if (!_recordService.IsRecordingEnabled && !_recordService.IsPlayingEnabled)
             {
                 await _next(context);
@@ -27,7 +22,32 @@ namespace tfl_stats.Server.MiddleWare
 
             var key = context.Request.Path + context.Request.QueryString.ToString();
 
+            if (context.Request.Method == HttpMethods.Post)
+            {
+                context.Request.EnableBuffering();
+                using var reader = new StreamReader(context.Request.Body, leaveOpen: true);
+                var body = await reader.ReadToEndAsync();
+                context.Request.Body.Position = 0;
+                key += body;
+            }
+
+            if (_recordService.IsPlayingEnabled &&
+                _recordService.TryGetRecorded(key, out var recordedResponse))
+            {
+                context.Response.StatusCode = 200;
+                context.Response.ContentType = "application/json";
+                if (!string.IsNullOrEmpty(recordedResponse))
+                    await context.Response.WriteAsync(recordedResponse);
+                return;
+            }
+
             var responseBody = await CaptureResponseAsync(context);
+
+
+            if (_recordService.IsRecordingEnabled && context.Response.StatusCode == 200)
+            {
+                _recordService.Record(key, responseBody);
+            }
         }
 
         private async Task<string> CaptureResponseAsync(HttpContext context)
@@ -57,30 +77,5 @@ namespace tfl_stats.Server.MiddleWare
 
             return body;
         }
-
-        //public void ChangeSetting(HttpContext context)
-        //{
-        //    var mode = context.Request.Query["mode"];
-        //    switch (mode)
-        //    {
-        //        case "record_on":
-        //            _recordService.EnableRecording();
-        //            break;
-        //        case "record_off":
-        //            _recordService.DisableRecording();
-        //            break;
-        //        case "playback_on":
-        //            _recordService.EnablePlayback();
-        //            break;
-        //        case "Save":
-        //            _recordService.SaveAsync();
-        //            break;
-        //        case "Load":
-        //            _recordService.LoadAsync();
-        //            break;
-
-        //    }
-
-        //}
     }
 }
