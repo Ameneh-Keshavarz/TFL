@@ -35,6 +35,13 @@ namespace tfl_stats.Server.Controllers
             return Ok(new { message = "Playback enabled" });
         }
 
+        [HttpPost("playback/off")]
+        public IActionResult DisablePlayback()
+        {
+            _recorderService.DisablePlayback();
+            return Ok(new { message = "Playback disabled" });
+        }
+
         [HttpPost("save")]
         public async Task<IActionResult> Save()
         {

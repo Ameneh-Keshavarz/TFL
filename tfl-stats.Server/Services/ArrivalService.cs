@@ -14,12 +14,21 @@ namespace tfl_stats.Server.Services
         }
         public async Task<ResponseResult<List<Prediction>>> GetArrival(string lineName, string stationId)
         {
-            var response = await _lineClient.ArrivalsAsync([lineName], stationId, null, null);
-            if (response != null)
+            try
             {
-                return new ResponseResult<List<Prediction>>(true, response.ToList(), ResponseStatus.Ok);
+                var response = await _lineClient.ArrivalsAsync([lineName], stationId, null, null);
+                if (response != null)
+                {
+                    return new ResponseResult<List<Prediction>>(true, response.ToList(), ResponseStatus.Ok);
+                }
+                return new ResponseResult<List<Prediction>>(false, new List<Prediction>(), ResponseStatus.NotFound);
             }
-            return new ResponseResult<List<Prediction>>(false, new List<Prediction>(), ResponseStatus.NotFound);
+            catch (HttpRequestException ex)
+            {
+                _logger.LogError(ex, "Network error while fetching arrivals for {LineName} at {StationId}", lineName, stationId);
+                return new ResponseResult<List<Prediction>>(false, new List<Prediction>(), ResponseStatus.InternalServerError);
+            }
+
         }
     }
 }

@@ -46,9 +46,14 @@ export default function LineDiagramFetcher({ lineName }) {
                 const data = await response.json();
                 setArrival(data);
             }
+            else {
+                setArrival([]);
+            }
         }
         catch (error) {
             console.error('Error fetching Arrival data:', error);
+            setArrival([]);
+
         }
 
     }
