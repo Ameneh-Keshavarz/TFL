@@ -27,15 +27,15 @@ namespace tfl_stats.Server.Controllers
                 switch (response.ResponseStatus)
                 {
                     case ResponseStatus.BadRequest:
-                        _logger.LogError("Bad Request");
+                        _logger.LogError("TfL journey request failed with BadRequest.");
                         return BadRequest();
 
                     case ResponseStatus.NotFound:
-                        _logger.LogWarning("Not Found");
+                        _logger.LogWarning("TfL journey request returned NotFound.");
                         return NotFound();
 
                     default:
-                        _logger.LogError("Unexpected Error");
+                        _logger.LogError("TfL journey request failed with unexpected error.");
                         return StatusCode(500);
                 }
             }

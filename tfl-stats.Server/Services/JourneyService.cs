@@ -9,14 +9,14 @@ namespace tfl_stats.Server.Services
     {
         private readonly JourneyClient _journeyclient;
         private readonly ILogger<JourneyService> _logger;
-        private readonly StopPointService _stopPointService;
+        //private readonly StopPointService _stopPointService;
 
         public JourneyService(JourneyClient journeyclient,
             StopPointService stopPointService,
             ILogger<JourneyService> logger)
         {
             _journeyclient = journeyclient;
-            _stopPointService = stopPointService;
+            //_stopPointService = stopPointService;
             _logger = logger;
         }
 
@@ -76,7 +76,7 @@ namespace tfl_stats.Server.Services
             }
             catch (ApiException ex)
             {
-                _logger.LogError(ex, "Error calling TfL API");
+                _logger.LogError(ex, "Failed to call TfL API to get journey result");
                 return new ResponseResult<List<Journey2>>(false, new List<Journey2>(), ResponseStatus.NotFound);
             }
         }
