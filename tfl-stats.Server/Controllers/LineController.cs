@@ -6,12 +6,12 @@ namespace tfl_stats.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LineStatusByModeController : ControllerBase
+    public class LineController : ControllerBase
     {
         private LineService _lineService;
-        private ILogger<LineStatusByModeController> _logger;
+        private ILogger<LineController> _logger;
 
-        public LineStatusByModeController(LineService lineService, ILogger<LineStatusByModeController> logger)
+        public LineController(LineService lineService, ILogger<LineController> logger)
         {
             _lineService = lineService;
             _logger = logger;

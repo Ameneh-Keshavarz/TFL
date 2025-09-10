@@ -73,7 +73,7 @@ function LineStatusTable() {
     useEffect(() => {
         const fetchLineData = async () => {
             try {
-                const response = await fetch('api/LineStatusByMode');
+                const response = await fetch('api/Line');
                 if (response.ok) {
                     const data = await response.json();
                     setLines(data);
