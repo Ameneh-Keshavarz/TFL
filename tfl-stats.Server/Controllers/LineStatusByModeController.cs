@@ -36,7 +36,7 @@ namespace tfl_stats.Server.Controllers
                         return StatusCode(500);
                 }
             }
-            _logger.LogInformation("Successfully fetched Lines.");
+            _logger.LogInformation("Successfully fetched lines.");
             return Ok(response.Data);
         }
     }

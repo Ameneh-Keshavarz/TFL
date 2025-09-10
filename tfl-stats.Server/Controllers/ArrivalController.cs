@@ -26,17 +26,17 @@ namespace tfl_stats.Server.Controllers
                 switch (response.ResponseStatus)
                 {
                     case ResponseStatus.NotFound:
-                        _logger.LogWarning("Not Found");
+                        _logger.LogWarning("TfL arrival request returned NotFound.");
                         return NotFound();
 
                     default:
-                        _logger.LogError("Unexpected Error");
+                        _logger.LogError("TfL arrival request failed with unexpected error.");
                         return StatusCode(500);
                 }
 
 
             }
-            _logger.LogInformation("Successfully fetched Arrivals.");
+            _logger.LogInformation("Successfully fetched arrivals.");
             return Ok(response.Data);
         }
     }
