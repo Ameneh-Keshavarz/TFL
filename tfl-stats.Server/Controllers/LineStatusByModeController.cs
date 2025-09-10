@@ -28,11 +28,11 @@ namespace tfl_stats.Server.Controllers
                 {
 
                     case ResponseStatus.NotFound:
-                        _logger.LogWarning("Not Found");
+                        _logger.LogWarning("TfL line request returned NotFound.");
                         return NotFound();
 
                     default:
-                        _logger.LogError("Unexpected Error");
+                        _logger.LogError("TfL line request failed with unexpected error.");
                         return StatusCode(500);
                 }
             }
