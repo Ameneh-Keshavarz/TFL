@@ -23,9 +23,9 @@ namespace tfl_stats.Server.Services
                 }
                 return new ResponseResult<List<Prediction>>(false, new List<Prediction>(), ResponseStatus.NotFound);
             }
-            catch (HttpRequestException ex)
+            catch (Exception ex)
             {
-                _logger.LogError(ex, "Network error while fetching arrivals for {LineName} at {StationId}", lineName, stationId);
+                _logger.LogError(ex, "Error while fetching arrivals for {LineName} at {StationId}", lineName, stationId);
                 return new ResponseResult<List<Prediction>>(false, new List<Prediction>(), ResponseStatus.InternalServerError);
             }
 

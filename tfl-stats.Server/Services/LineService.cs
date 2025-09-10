@@ -18,14 +18,22 @@ namespace tfl_stats.Server.Services
 
         public async Task<ResponseResult<List<Line>>> GetLine()
         {
-            var lineResponse = await _lineClient.StatusByModeAsync(new[] { "tube" }, true, null);
-
-            if (lineResponse != null)
+            try
             {
-                return new ResponseResult<List<Line>>(true, lineResponse.ToList(), ResponseStatus.Ok);
-            }
+                var lineResponse = await _lineClient.StatusByModeAsync(new[] { "tube" }, true, null);
 
-            return new ResponseResult<List<Line>>(false, new List<Line>(), ResponseStatus.NotFound);
+                if (lineResponse != null)
+                {
+                    return new ResponseResult<List<Line>>(true, lineResponse.ToList(), ResponseStatus.Ok);
+                }
+
+                return new ResponseResult<List<Line>>(false, new List<Line>(), ResponseStatus.NotFound);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while fetching lines");
+                return new ResponseResult<List<Line>>(false, new List<Line>(), ResponseStatus.InternalServerError);
+            }
         }
 
     }

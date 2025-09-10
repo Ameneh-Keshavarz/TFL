@@ -9,14 +9,12 @@ namespace tfl_stats.Server.Services
     {
         private readonly JourneyClient _journeyclient;
         private readonly ILogger<JourneyService> _logger;
-        //private readonly StopPointService _stopPointService;
 
         public JourneyService(JourneyClient journeyclient,
             StopPointService stopPointService,
             ILogger<JourneyService> logger)
         {
             _journeyclient = journeyclient;
-            //_stopPointService = stopPointService;
             _logger = logger;
         }
 
@@ -28,8 +26,6 @@ namespace tfl_stats.Server.Services
             {
                 return new ResponseResult<List<Journey2>>(false, new List<Journey2>(), ResponseStatus.BadRequest);
             }
-
-            //string url = $"Journey/journeyresults/{Uri.EscapeDataString(journeyRequest.FromNaptanId)}/to/{Uri.EscapeDataString(journeyRequest.ToNaptanId)}";
 
             try
             {
@@ -74,10 +70,10 @@ namespace tfl_stats.Server.Services
 
                 return new ResponseResult<List<Journey2>>(false, new List<Journey2>(), ResponseStatus.NotFound);
             }
-            catch (ApiException ex)
+            catch (Exception ex)
             {
-                _logger.LogError(ex, "Failed to call TfL API to get journey result");
-                return new ResponseResult<List<Journey2>>(false, new List<Journey2>(), ResponseStatus.NotFound);
+                _logger.LogError(ex, "Error while fetching journey results");
+                return new ResponseResult<List<Journey2>>(false, new List<Journey2>(), ResponseStatus.InternalServerError);
             }
         }
     }
