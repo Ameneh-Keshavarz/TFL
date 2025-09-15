@@ -3,6 +3,7 @@ import LineStatusTable from './Pages/Line';
 import JourneyPlanner from './Pages/Journey';
 import LineSelector from './Pages/LineSelector';
 import CentralLineFromJson from './Components/LineDiagramFetcher';
+import Map from './Pages/Map';
 
 import './App.css';
 
@@ -32,6 +33,12 @@ function App() {
                     >
                         Line Selector
                     </Link>
+                    <Link
+                        to="/Map"
+                        className={`nav-link ${location.pathname === '/Map' ? 'active' : ''}`}
+                    >
+                        Map
+                    </Link>
                 </nav>
             </header>
 
@@ -42,6 +49,8 @@ function App() {
                     <Route path="/lines" element={<LineStatusTable />} />
                     <Route path="/LineSelector" element={<LineSelector />} />
                     <Route path="/CentralLineDiagramFromJson" element={<CentralLineFromJson />} />
+                    <Route path="/Map" element={<Map />} />
+
 
                 </Routes>
             </main>
