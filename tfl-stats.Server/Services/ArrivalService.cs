@@ -12,11 +12,11 @@ namespace tfl_stats.Server.Services
             _lineClient = lineClinet;
             _logger = logger;
         }
-        public async Task<ResponseResult<List<Prediction>>> GetArrival(string lineName, string stationId)
+        public async Task<ResponseResult<List<Prediction>>> GetArrival(string[] lines, string stationId)
         {
             try
             {
-                var response = await _lineClient.ArrivalsAsync([lineName], stationId, null, null);
+                var response = await _lineClient.ArrivalsAsync(lines, stationId, null, null);
                 if (response != null)
                 {
                     return new ResponseResult<List<Prediction>>(true, response.ToList(), ResponseStatus.Ok);
@@ -25,7 +25,7 @@ namespace tfl_stats.Server.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error while fetching arrivals for {LineName} at {StationId}", lineName, stationId);
+                _logger.LogError(ex, "Error while fetching arrivals at {StationId}", stationId);
                 return new ResponseResult<List<Prediction>>(false, new List<Prediction>(), ResponseStatus.InternalServerError);
             }
 

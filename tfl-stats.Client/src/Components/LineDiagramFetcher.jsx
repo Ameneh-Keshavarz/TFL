@@ -12,9 +12,7 @@ export default function LineDiagramFetcher({ lineName }) {
     const [lineDiagram, setLineDiagram] = useState([]);
     const [arrival, setArrival] = useState([]);
     const [selectedStationId, setSelectedStationId] = useState(null);
-    // const [selectedStationName, setSelectedStationName] = useState("");
-    console.log(lineName);
-
+   
     useEffect(() => {
         const fetchLineData = async () => {
             try {
@@ -31,17 +29,21 @@ export default function LineDiagramFetcher({ lineName }) {
 
         setArrival([]);
         setSelectedStationId(null);
-        //setSelectedStationName("");
 
         fetchLineData();
     }, [lineName]);
 
     const SCALE = 20;
 
-    const FetchArrivals=async (stationId, line)=>{
+    const FetchArrivals = async (stationId, line) => {
 
         try {
-            const response = await fetch(`api/Arrival?lineName=${line}&stationId=${stationId}`);
+            const params = new URLSearchParams();
+            params.append("stationId", stationId);
+
+            params.append("lines", line);
+
+            const response = await fetch(`api/Arrival?${params.toString()}`);
             if (response.ok) {
                 const data = await response.json();
                 setArrival(data);
@@ -87,11 +89,6 @@ export default function LineDiagramFetcher({ lineName }) {
             url: el.Url
         }));
 
-    //const xs = [
-    //    ...stops.map(s => s.X),
-    //    ...connections.flatMap(c => [c.X0, c.X1]),
-    //    ...names.map(n => n.X + 250),
-    //];
     const fontSize = 14; 
     const xs = [
         ...stops.map(s => s.X),
@@ -110,8 +107,6 @@ export default function LineDiagramFetcher({ lineName }) {
     const minY = ys.length ? Math.min(...ys) : 0;
     const maxY = ys.length ? Math.max(...ys) : 700 * SCALE;
 
-    console.log(minX,maxX,minY,maxY);
-
     const padding = 12;
     const vbX = minX - padding;
     const vbY = minY - padding;
@@ -126,7 +121,7 @@ export default function LineDiagramFetcher({ lineName }) {
 
     }, {});
 
-    console.log(arrivalsByPlatform);
+    console.log("arrivals:",arrival);
 
 
     return (
@@ -176,20 +171,12 @@ export default function LineDiagramFetcher({ lineName }) {
                         url={n.url}
                         onClick={() => {
                             setSelectedStationId(n.stationId);
-                            //setSelectedStationName(n.name)
                             FetchArrivals(n.stationId,lineName);
                         }}
                         isSelected={(selectedStationId == n.stationId)}
                     />
                 ))}
             </svg>
-
-            {/*{selectedStationName.length !== 0 && (*/}
-            {/*    <p style={{ color: "gray", marginTop: "5px" }}>*/}
-            {/*        {selectedStationName}*/}
-            {/*    </p>*/}
-            {/*)}*/}
-
 
             <div className="arrivals">
                 {Object.entries(arrivalsByPlatform).map(([platform, preds], i) => (
@@ -222,8 +209,6 @@ export default function LineDiagramFetcher({ lineName }) {
 
 
 }
-
-
 
 LineDiagramFetcher.propTypes = {
     lineName: PropTypes.string,

@@ -18,9 +18,9 @@ namespace tfl_stats.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetArrival(string lineName, string stationId)
+        public async Task<IActionResult> GetArrival([FromQuery] string[] lines, [FromQuery] string stationId)
         {
-            var response = await _arrivalService.GetArrival(lineName, stationId);
+            var response = await _arrivalService.GetArrival(lines, stationId);
             if (!response.IsSuccessful)
             {
                 switch (response.ResponseStatus)
