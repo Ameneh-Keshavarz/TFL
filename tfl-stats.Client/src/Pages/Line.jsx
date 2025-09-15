@@ -64,7 +64,7 @@ function LineStatusRow({ line, toggleStatusDetails, expandedStatusRows }) {
     ];
 }
 
-function LineStatusTable() {
+export default function LineStatusTable() {
     const [lines, setLines] = useState([]);
     const [expandedStatusRows, setExpandedStatusRows] = useState({});
     const [loading, setLoading] = useState(true);
@@ -140,4 +140,4 @@ function LineStatusTable() {
     );
 }
 
-export default LineStatusTable;
+//export default LineStatusTable;

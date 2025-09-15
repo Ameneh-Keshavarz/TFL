@@ -110,7 +110,7 @@ function JourneyLeg({ leg }) {
     );
 }
 
-function JourneyPlanner() {
+export default function JourneyPlanner() {
     const [formData, setFormData] = useState({
         from: { name: '', id: '' },
         to: { name: '', id: '' },
@@ -246,4 +246,4 @@ function JourneyPlanner() {
     );
 }
 
-export default JourneyPlanner;
+//export default JourneyPlanner;
