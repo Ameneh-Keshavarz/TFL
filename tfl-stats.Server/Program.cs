@@ -35,12 +35,6 @@ namespace tfl_stats.Server
                 throw new InvalidOperationException("ApiSettings:BaseUrl is not configured in appsettings.json.");
             }
 
-            /*builder.Services.AddHttpClient<ApiClient>(options =>
-            {
-                options.BaseAddress = new Uri(baseUrl);
-                options.Timeout = TimeSpan.FromSeconds(10);
-            });*/
-
             builder.Services.AddHttpClient<LineClient>();
             builder.Services.AddHttpClient<JourneyClient>();
             builder.Services.AddHttpClient<StopPointClient>();
@@ -49,10 +43,10 @@ namespace tfl_stats.Server
             builder.Services.AddScoped<StopPointService>();
             builder.Services.AddScoped<JourneyService>();
             builder.Services.AddSingleton<LineDiagramService>();
-            // Not sure if it should be Sigleton
-            builder.Services.AddSingleton<ArrivalService>();
+            builder.Services.AddScoped<ArrivalService>();
 
             builder.Services.AddSingleton<ResponseRecorderService>();
+            builder.Services.AddScoped<MapDataService>();
 
             var app = builder.Build();
 
