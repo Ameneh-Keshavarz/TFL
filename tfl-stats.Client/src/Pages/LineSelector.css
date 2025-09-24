@@ -1,4 +1,4 @@
-.row {
+﻿.row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -9,7 +9,7 @@
 .box {
     width: 140px;
     height: 40px;
-    border: 2px solid #56c5b6;
+    /*border: 2px solid #56c5b6;*/
     border-radius: 6px;
     display: flex;
     justify-content: center;
@@ -89,4 +89,9 @@
     display: block;
     width: 100%;
     margin-left: 30px;
+}
+.box[aria-selected="true"] {
+    font-weight: 700;
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
 }

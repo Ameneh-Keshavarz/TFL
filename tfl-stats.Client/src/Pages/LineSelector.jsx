@@ -20,23 +20,28 @@ export default function LineSelector() {
         "elizabeth"
     ];
 
-    const [selectedLine, setselectedLine] = useState("bakerloo");
+    const [selectedLine, setSelectedLine] = useState("bakerloo");
+   
 
     return (
         <div className="row">
             {
                 lines.map(line => (
-                <div className={`box ${line}`} key={line} onClick={() => setselectedLine(line)}>
-                    {capitalize(line)}
-                </div>
+                    <div
+                        key={line}
+                        className={`box ${line}`}
+                        onClick={() => setSelectedLine(line)}
+                        aria-selected={selectedLine === line}
+                    >
+                        {capitalize(line)}
+                    </div>
+
                 ))
             }
 
             <div className="diagram-container">
                 <LineDiagramFetcher lineName={selectedLine} />
-            </div>
-
-            
+            </div> 
         </div>
     );
 }
