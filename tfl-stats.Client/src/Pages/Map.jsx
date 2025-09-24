@@ -3,16 +3,13 @@ import { useEffect, useState } from "react";
 import TrainPrediction from "../Components/TrainPrediction.jsx";
 import "./Map.css"
 
-
-
-
 const containerStyle = {
     width: "50%",
     height: "500px",
     marginTop: "24px",
 };
 
-const center = {
+const initialCenter = {
     lat: 51.5074,
     lng: -0.1278,
 };
@@ -20,11 +17,20 @@ const center = {
 export default function Map() {
     const [MapData, setMapData] = useState([]);
     const [arrival, setArrival] = useState([]);
-
-
-
+    const [center, setCenter] = useState(initialCenter);
 
     useEffect(() => {
+
+        if (!navigator.geolocation) return;
+
+        navigator.geolocation.getCurrentPosition(
+            ({ coords }) => {
+                const loc = { lat: coords.latitude, lng: coords.longitude };
+                setCenter(loc);
+            },
+            () => { } 
+        );
+
         const fetchMapData = async () => {
             try {
                 const response = await fetch(`api/MapData`);
@@ -116,11 +122,19 @@ export default function Map() {
 
     console.log("preds: ", arrivalsByPlatform);
 
+    const getPlatformNumber = (label) => {
+        const matches = label.match(/\d+/g);
+        if (!matches || matches.length === 0) return Number.POSITIVE_INFINITY;
+        return Number(matches[matches.length - 1]);
+    }
+
+    console.log(center, "center");
+
 
     return (
         <LoadScript googleMapsApiKey="AIzaSyAjjrghzDo7QcPf2HbQIeN6w9J-1FfccBg">
             <div className="map-layout">
-                <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
+                <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={12}>
                     {/*    <Marker position={center} />*/}
                     {stations.map(station => (
                         <Circle
@@ -158,7 +172,13 @@ export default function Map() {
                 </GoogleMap>
 
                 <div className="arrivals">
-                    {Object.entries(arrivalsByPlatform).map(([platform, preds], i) => (
+                    {Object.entries(arrivalsByPlatform)
+                        .sort(([a], [b]) => {
+                            const na = getPlatformNumber(a);
+                            const nb = getPlatformNumber(b);
+                            if (na !== nb) return na - nb;
+                            return na - nb;
+                        }).map(([platform, preds], i) => (
                         <div key={i} className="platform-card">
                             <h3 className="platform-header">{preds[0].stationName} - {platform}</h3>
                             {preds
