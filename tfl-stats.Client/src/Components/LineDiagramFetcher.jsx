@@ -121,7 +121,13 @@ export default function LineDiagramFetcher({ lineName }) {
 
     }, {});
 
-    console.log("arrivals:",arrival);
+    console.log("arrivals:", arrival);
+
+    const getPlatformNumber = (label) => {
+        const matches = label.match(/\d+/g);
+        if (!matches || matches.length === 0) return Number.POSITIVE_INFINITY;
+        return Number(matches[matches.length - 1]);
+    }
 
 
     return (
@@ -176,33 +182,43 @@ export default function LineDiagramFetcher({ lineName }) {
                         isSelected={(selectedStationId == n.stationId)}
                     />
                 ))}
-            </svg>
+            </svg>           
 
             <div className="arrivals">
-                {Object.entries(arrivalsByPlatform).map(([platform, preds], i) => (
-                    <div key={i} className="platform-card">
-                        <h3 className="platform-header">{capitalize(lineName)} - {platform}</h3>
-                        {preds
-                            .sort((a, b) => a.timeToStation - b.timeToStation)
-                            .map((pred, j) => (
-                            <TrainPrediction
-                                key={j}
-                                lineName={pred.lineName}
-                                platformName={pred.platformName}
-                                destinationName={pred.destinationName}
-                                destinationNaptanId={pred.destinationNaptanId}
-                                timeToStation={pred.timeToStation}
-                            />
-                        ))}
-                    </div>
-                ))}
+                {Object.entries(arrivalsByPlatform)
+                    .sort(([a], [b]) => {
+                        const na = getPlatformNumber(a);
+                        const nb = getPlatformNumber(b);
+                        if (na !== nb) return na - nb;
+                        return na - nb;             
+                    })
+                    .map(([platform, preds]) => (
+                        <div key={platform} className="platform-card">
+                            <h3 className="platform-header">{capitalize(lineName)} - {platform}</h3>
+                            {preds
+                                .sort((a, b) => a.timeToStation - b.timeToStation)
+                                .map((pred, j) => (
+                                    <TrainPrediction
+                                        key={j}
+                                        lineName={pred.lineName}
+                                        platformName={pred.platformName}
+                                        destinationName={pred.destinationName}
+                                        destinationNaptanId={pred.destinationNaptanId}
+                                        timeToStation={pred.timeToStation}
+                                    />
+                                ))}
+                        </div>
+                    ))}
 
                 {arrival.length === 0 && (
+
                     <p style={{ color: "gray", marginTop: "10px" }}>
-                        Click a station to see arrivals
+                        To see {capitalize(lineName)} line train arrivals, select a station.
                     </p>
+
                 )}
             </div>
+
 
         </div>
     );
