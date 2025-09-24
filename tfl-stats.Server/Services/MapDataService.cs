@@ -31,11 +31,11 @@ namespace tfl_stats.Server.Services
     }
     class JsonMapBuilder : IMapClient, IDisposable
     {
-        private readonly List<MapData> _elements = [];
+        private readonly List<MapElement> _elements = [];
 
         public void AddStopPoint(string label, string id, double lat, double lon, IEnumerable<string> lines)
         {
-            var station = new StationData()
+            var station = new StationNode()
             {
                 Type = "StationData",
                 StationId = id,
@@ -51,13 +51,13 @@ namespace tfl_stats.Server.Services
 
         public void AddSequence(string line, IEnumerable<(double, double)> points)
         {
-            var sequence = new LineData()
+            var sequence = new LinePath()
             {
                 Type = "LineData",
                 LineName = line,
                 LinePoints = points.Select((t) =>
                 {
-                    return new PointData() { Lat = t.Item1, Lon = t.Item2 };
+                    return new GeoPoint() { Lat = t.Item1, Lon = t.Item2 };
                 }).ToList(),
 
             };
@@ -78,15 +78,15 @@ namespace tfl_stats.Server.Services
         }
     }
 
-    [JsonDerivedType(typeof(StationData), "StationData")]
-    [JsonDerivedType(typeof(LineData), "LineData")]
-    public abstract class MapData
+    [JsonDerivedType(typeof(StationNode), "StationData")]
+    [JsonDerivedType(typeof(LinePath), "LineData")]
+    public abstract class MapElement
     {
         public required string Type { get; set; }
 
     }
 
-    public class StationData : MapData
+    public class StationNode : MapElement
     {
         public required string StationId { get; set; }
         public required string Name { get; set; }
@@ -96,13 +96,13 @@ namespace tfl_stats.Server.Services
         public required List<string> Lines { get; set; }
     }
 
-    public class LineData : MapData
+    public class LinePath : MapElement
     {
         public string LineName { get; set; }
-        public List<PointData> LinePoints { get; set; }
+        public List<GeoPoint> LinePoints { get; set; }
     }
 
-    public class PointData
+    public class GeoPoint
     {
         public double Lat { get; set; }
         public double Lon { get; set; }
