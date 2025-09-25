@@ -23,7 +23,6 @@ export default function LineDiagramFetcher({ lineName }) {
                 } 
             } catch (error) {
                 console.error('Error fetching line diagram data:', error);
-               
             }
         };
 
@@ -55,9 +54,7 @@ export default function LineDiagramFetcher({ lineName }) {
         catch (error) {
             console.error('Error fetching Arrival data:', error);
             setArrival([]);
-
         }
-
     }
 
     const stops = lineDiagram
@@ -128,7 +125,6 @@ export default function LineDiagramFetcher({ lineName }) {
         if (!matches || matches.length === 0) return Number.POSITIVE_INFINITY;
         return Number(matches[matches.length - 1]);
     }
-
 
     return (
         <div className="diagram-layout">
@@ -218,12 +214,8 @@ export default function LineDiagramFetcher({ lineName }) {
 
                 )}
             </div>
-
-
         </div>
     );
-
-
 }
 
 LineDiagramFetcher.propTypes = {

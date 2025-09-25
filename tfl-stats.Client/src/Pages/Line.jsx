@@ -139,5 +139,3 @@ export default function LineStatusTable() {
         </div>
     );
 }
-
-//export default LineStatusTable;

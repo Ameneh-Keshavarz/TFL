@@ -245,5 +245,3 @@ export default function JourneyPlanner() {
         </div>
     );
 }
-
-//export default JourneyPlanner;
