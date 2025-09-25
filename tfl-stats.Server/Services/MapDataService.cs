@@ -98,8 +98,8 @@ namespace tfl_stats.Server.Services
 
     public class LinePath : MapElement
     {
-        public string LineName { get; set; }
-        public List<GeoPoint> LinePoints { get; set; }
+        public required string LineName { get; set; }
+        public required List<GeoPoint> LinePoints { get; set; }
     }
 
     public class GeoPoint
