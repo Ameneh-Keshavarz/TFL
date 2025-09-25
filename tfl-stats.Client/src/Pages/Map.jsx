@@ -40,12 +40,12 @@ export default function Map() {
                 }
             } catch (error) {
                 console.error('Error fetching line diagram data:', error);
-
             }
         };
 
         setArrival([]);
         fetchMapData();
+
     }, []);
 
     const stations = MapData
@@ -109,7 +109,6 @@ export default function Map() {
             setArrival([]);
 
         }
-
     }
 
     const arrivalsByPlatform = arrival.reduce((acc, pred) => {
@@ -120,16 +119,11 @@ export default function Map() {
 
     }, {});
 
-    console.log("preds: ", arrivalsByPlatform);
-
     const getPlatformNumber = (label) => {
         const matches = label.match(/\d+/g);
         if (!matches || matches.length === 0) return Number.POSITIVE_INFINITY;
         return Number(matches[matches.length - 1]);
     }
-
-    console.log(center, "center");
-
 
     return (
         <LoadScript googleMapsApiKey="AIzaSyAjjrghzDo7QcPf2HbQIeN6w9J-1FfccBg">
