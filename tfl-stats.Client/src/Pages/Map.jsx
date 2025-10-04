@@ -128,7 +128,7 @@ export default function Map() {
     return (
         <LoadScript googleMapsApiKey="AIzaSyAjjrghzDo7QcPf2HbQIeN6w9J-1FfccBg">
             <div className="map-layout">
-                <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={12}>
+                <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={12} clickableIcons={false}>
                     {/*    <Marker position={center} />*/}
                     {stations.map(station => (
                         <Circle
