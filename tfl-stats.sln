@@ -6,6 +6,10 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfl-stats.Server", "tfl-stats.Server\tfl-stats.Server.csproj", "{4D1AA2BC-2BDE-4547-AFD8-755246525C6A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Downloads\Dockerfile = ..\..\..\Downloads\Dockerfile
+		..\..\..\Downloads\dockerignore = ..\..\..\Downloads\dockerignore
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tfl-stats.Tests", "tfl-stats.Tests\tfl-stats.Tests.csproj", "{3C496157-DAE3-8305-B380-D118DB5787DC}"
 EndProject
