@@ -1,4 +1,4 @@
-# ---------- Build React SPA (Vite) ----------
+﻿# ---------- Build React SPA (Vite) ----------
 FROM node:20 AS webbuild
 WORKDIR /app/client
 
@@ -16,6 +16,10 @@ WORKDIR /src
 
 # Copy the entire repo so project references are available
 COPY . .
+
+# ✅ Install NSwag CLI for code generation
+RUN dotnet tool install --global NSwag.ConsoleCore
+ENV PATH="$PATH:/root/.dotnet/tools"
 
 # Copy built SPA into Server's wwwroot (Vite default output = dist)
 COPY --from=webbuild /app/client/dist ./tfl-stats.Server/wwwroot
