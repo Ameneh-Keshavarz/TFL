@@ -33,13 +33,15 @@ RUN dotnet publish -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
-# Kestrel on 8080 (Coolify will proxy + TLS)
-ENV ASPNETCORE_URLS=http://+:8080 \
+# ✅ Changed port from 8080 to 5000 to avoid conflicts
+ENV ASPNETCORE_URLS=http://+:5000 \
     DOTNET_RUNNING_IN_CONTAINER=true \
     DOTNET_GCServer=1
 
-EXPOSE 8080
+EXPOSE 5000
+
+# Copy published output
 COPY --from=build /app/publish .
 
-# The dll name matches your csproj: tfl-stats.Server.csproj -> tfl-stats.Server.dll
+# Start the app
 ENTRYPOINT ["dotnet", "tfl-stats.Server.dll"]
