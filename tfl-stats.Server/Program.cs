@@ -67,6 +67,7 @@ namespace tfl_stats.Server
 
             app.MapControllers();
 
+            app.UseStaticFiles();
             app.MapFallbackToFile("/index.html");
             app.UseMiddleware<RecorderMiddleware>();
 

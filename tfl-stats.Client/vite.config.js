@@ -30,6 +30,7 @@ export default defineConfig(({ command }) => {
     }
 
     return {
+        base: '/',    
         plugins: [react()],
         resolve: {
             alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) }
