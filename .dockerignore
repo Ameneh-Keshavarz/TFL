@@ -1,0 +1,23 @@
+﻿# Git
+.git
+.gitignore
+
+# Node / Vite
+**/node_modules
+**/.vite
+**/dist
+**/.next
+**/.cache
+npm-debug.log*
+yarn-error.log*
+
+# .NET
+**/bin
+**/obj
+*.user
+*.suo
+
+# OS/editor cruft
+*.log
+.DS_Store
+Thumbs.db
