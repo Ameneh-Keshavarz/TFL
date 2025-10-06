@@ -17,7 +17,7 @@ WORKDIR /src
 # Copy the entire repo so project references are available
 COPY . .
 
-# ✅ Install NSwag CLI for code generation
+# Install NSwag CLI for code generation
 RUN dotnet tool install --global NSwag.ConsoleCore
 ENV PATH="$PATH:/root/.dotnet/tools"
 
@@ -33,7 +33,7 @@ RUN dotnet publish -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
-# ✅ Changed port from 8080 to 5000 to avoid conflicts
+# Kestrel on 5000
 ENV ASPNETCORE_URLS=http://+:5000 \
     DOTNET_RUNNING_IN_CONTAINER=true \
     DOTNET_GCServer=1
