@@ -1,23 +1,17 @@
-﻿# Git
+# Git
 .git
 .gitignore
 
-# Node / Vite
-**/node_modules
-**/.vite
-**/dist
-**/.next
-**/.cache
-npm-debug.log*
-yarn-error.log*
+# Node
+tfl-stats.Client/node_modules
+tfl-stats.Client/.vite
+tfl-stats.Client/dist
+tfl-stats.Client/build
 
 # .NET
 **/bin
 **/obj
-*.user
-*.suo
 
 # OS/editor cruft
-*.log
-.DS_Store
-Thumbs.db
+**/.DS_Store
+**/Thumbs.db
