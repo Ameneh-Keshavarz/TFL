@@ -24,9 +24,6 @@ export default defineConfig(({ command }) => {
             '^/weatherforecast': { target, secure: false },
             '^/api': { target, secure: false }
         }
-
-        // If you want HTTPS in *dev* only, put your cert code here.
-        // Do NOT run it during build.
     }
 
     return {
